@@ -1,0 +1,91 @@
+﻿@model IEnumerable<sistema_fichas.Business.Contacto>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Gestión de contactos</h2>
+<hr />
+
+<section id="busqueda" style="margin-top:20px">
+    <div class="row-fluid">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Busqueda Avanzada</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    @using (Html.BeginForm("Index", "Contacto", null, FormMethod.Get, new { @class = "navbar-form navbar-right form-inline", @for = "form" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("busqueda", "", new { @class = "form-control", @placeholder = "Ingrese un filtro" })
+
+                        </div>
+                        <div class="form-group">
+                            @Html.DropDownList("filtro_tipo", ContactoHelper.getPropertyNamesAsSelectList(), new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary">
+                                <span class="glyphicon glyphicon-search"> </span>
+                                Buscar
+                            </button>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>
+<table class="table table-condensed table-hover table-striped table-bordered" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Celular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        
+        <th></th>
+    </tr>
+@if (!Model.Any()) {
+    <tr><td class="text-center" colspan="6"><span class="text-danger">No se encontraron registros</span></td></tr>
+                } else {
+foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.RazonSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celular)
+        </td>
+
+        <td>
+            <label class="label label-default">@ContactoHelper.getTipoName(item.Tipo)</label>
+        </td>
+        
+        <td class="text-center">
+            <a href="@Url.Action("Details", "Contacto", new { id = item.ID })">
+                <button class="btn btn-primary">
+                    <span class="fa fa-chevron-circle-right"></span>
+                </button>
+            </a>
+        </td>
+    </tr>
+}
+}
+</table>

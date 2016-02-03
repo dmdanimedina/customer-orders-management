@@ -1,0 +1,9 @@
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\bin\Release\sistema-fichas.Business.Core.dll.config
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\bin\Release\sistema-fichas.Business.Core.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\bin\Release\sistema-fichas.Business.Core.pdb
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\bin\Release\EntityFramework.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\bin\Release\EntityFramework.xml
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\obj\Release\sistema-fichas.Business.Core.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.Business.Core\obj\Release\sistema-fichas.Business.Core.pdb

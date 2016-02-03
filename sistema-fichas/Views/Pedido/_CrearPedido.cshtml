@@ -1,0 +1,55 @@
+﻿@model sistema_fichas.ViewModels.PedidoViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row-fluid">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                
+                @Html.HiddenFor(model => model.Pedido.Cliente_ID)
+                @Html.HiddenFor(model => model.Pedido.EstadoPedido_ID)
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pedido.FechaInicio, new { @class = "control-label col-md-2" })
+                    <div class="col-md-8 pull-left">
+                        <div class="input-group">
+                            @Html.TextBoxFor(model => model.Pedido.FechaInicio, new { @class = "form-control", @Value = DateTime.Now })
+                            <span class="input-group-addon" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+                        </div>
+                        <em>@Html.ValidationMessageFor(model => model.Pedido.FechaInicio, null, new { @class = "text-danger" })</em>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pedido.UserProfile_ID, new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @if (AuthorizationHelper.isAdministradorComercial(User)) { 
+                            @Html.DropDownListFor(model => model.Pedido.UserProfile_ID, Model.ListaUsuarios, new { @class = "form-control" });
+                        }else if(AuthorizationHelper.isEjecutivoCuenta(User)){
+                            @Html.HiddenFor(model => model.Pedido.UserProfile_ID, new { @class = "form-control" });
+                            @Html.Label(User.Identity.Name.ToUpper(), new { @class = "form-control", @disabled = true })
+                        }
+                        
+                        <em>@Html.ValidationMessageFor(model => model.Pedido.UserProfile_ID, null, new { @class = "text-danger" })</em>
+                    </div>
+                </div>
+                
+
+
+            }
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        dateInicio = $('#@Html.IdFor(model => model.Pedido.FechaInicio)');
+        dateTermino = $('#@Html.IdFor(model => model.Pedido.FechaTermino)');
+
+        dateTermino.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+        dateInicio.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+    });
+</script>

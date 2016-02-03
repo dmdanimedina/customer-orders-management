@@ -1,0 +1,9 @@
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\b\PagedList.Fakes.xml
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\b\PagedList.Fakes.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\b\PagedList.Fakes.pdb
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\b\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\b\PagedList.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\b\PagedList.xml
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\o\f.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\o\PagedList.Fakes.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas\obj\Debug\Fakes\pl\o\PagedList.Fakes.pdb

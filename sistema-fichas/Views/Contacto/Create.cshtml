@@ -1,0 +1,74 @@
+﻿@model sistema_fichas.Business.Contacto
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row-fluid">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombres, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Nombres, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Nombres, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cargo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Cargo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Cargo, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telefono, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Telefono, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Celular, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Celular, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Celular, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tipo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Tipo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Tipo, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Estado, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Estado, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Estado, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cliente_ID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Cliente_ID, new { @class = "control-label col-md-2 disabled"})
+                @Html.ValidationMessageFor(model => model.Cliente_ID, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+}
+

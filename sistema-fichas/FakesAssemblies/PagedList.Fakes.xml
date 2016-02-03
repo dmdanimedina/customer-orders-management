@@ -1,0 +1,575 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PagedList.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:PagedList.Fakes.ShimBasePagedList`1">
+            <summary>Shim type of PagedList.BasePagedList`1</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimBasePagedList`1.#ctor(PagedList.BasePagedList{`0})">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimBasePagedList`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimBasePagedList`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimBasePagedList`1.Bind(PagedList.IPagedList)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimBasePagedList`1.Bind(PagedList.IPagedList{`0})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimBasePagedList`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimBasePagedList`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.Constructor">
+            <summary>Sets the shim of BasePagedList`1.BasePagedList`1()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.ConstructorInt32Int32Int32">
+            <summary>Sets the shim of BasePagedList`1.BasePagedList`1(Int32 pageNumber, Int32 pageSize, Int32 totalItemCount)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.CountGet">
+            <summary>Sets the shim of BasePagedList`1.get_Count()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.GetEnumerator">
+            <summary>Sets the shim of BasePagedList`1.GetEnumerator()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.GetMetaData">
+            <summary>Sets the shim of BasePagedList`1.GetMetaData()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.ItemGetInt32">
+            <summary>Sets the shim of BasePagedList`1.get_Item(Int32 index)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the shim of BasePagedList`1.System.Collections.IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimBasePagedList`1.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.AllInstances.CountGet">
+            <summary>Sets the shim of BasePagedList`1.get_Count()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.AllInstances.GetEnumerator">
+            <summary>Sets the shim of BasePagedList`1.GetEnumerator()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.AllInstances.GetMetaData">
+            <summary>Sets the shim of BasePagedList`1.GetMetaData()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.AllInstances.ItemGetInt32">
+            <summary>Sets the shim of BasePagedList`1.get_Item(Int32 index)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimBasePagedList`1.AllInstances.SystemCollectionsIEnumerableGetEnumerator">
+            <summary>Sets the shim of BasePagedList`1.System.Collections.IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimPagedList`1">
+            <summary>Shim type of PagedList.PagedList`1</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.#ctor(PagedList.PagedList{`0})">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.Bind(PagedList.IPagedList)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.Bind(PagedList.IPagedList{`0})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedList`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedList`1.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedList`1.ConstructorIEnumerableOfT0Int32Int32">
+            <summary>Sets the shim of PagedList`1.PagedList`1(IEnumerable`1&lt;!0&gt; superset, Int32 pageNumber, Int32 pageSize)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedList`1.ConstructorIQueryableOfT0Int32Int32">
+            <summary>Sets the shim of PagedList`1.PagedList`1(IQueryable`1&lt;!0&gt; superset, Int32 pageNumber, Int32 pageSize)</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimPagedList`1.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimPagedListExtensions">
+            <summary>Shim type of PagedList.PagedListExtensions</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListExtensions.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListExtensions.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListExtensions.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListExtensions.PartitionOf1IEnumerableOfM0Int32``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.IEnumerable{``0},System.Int32,System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}}})">
+            <summary>Sets the shim of PagedListExtensions.Partition(IEnumerable`1&lt;!!0&gt; superset, Int32 pageSize)</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListExtensions.SplitOf1IEnumerableOfM0Int32``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.IEnumerable{``0},System.Int32,System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}}})">
+            <summary>Sets the shim of PagedListExtensions.Split(IEnumerable`1&lt;!!0&gt; superset, Int32 numberOfPages)</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListExtensions.ToPagedListOf1IEnumerableOfM0Int32Int32``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,PagedList.IPagedList{``0}})">
+            <summary>Sets the shim of PagedListExtensions.ToPagedList(IEnumerable`1&lt;!!0&gt; superset, Int32 pageNumber, Int32 pageSize)</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListExtensions.ToPagedListOf1IQueryableOfM0Int32Int32``1(Microsoft.QualityTools.Testing.Fakes.FakesDelegates.Func{System.Linq.IQueryable{``0},System.Int32,System.Int32,PagedList.IPagedList{``0}})">
+            <summary>Sets the shim of PagedListExtensions.ToPagedList(IQueryable`1&lt;!!0&gt; superset, Int32 pageNumber, Int32 pageSize)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListExtensions.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimPagedListMetaData">
+            <summary>Shim type of PagedList.PagedListMetaData</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListMetaData.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListMetaData.#ctor(PagedList.PagedListMetaData)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListMetaData.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListMetaData.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimPagedListMetaData.Bind(PagedList.IPagedList)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.Constructor">
+            <summary>Sets the shim of PagedListMetaData.PagedListMetaData()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.ConstructorIPagedList">
+            <summary>Sets the shim of PagedListMetaData.PagedListMetaData(IPagedList pagedList)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.FirstItemOnPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_FirstItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.FirstItemOnPageSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_FirstItemOnPage(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.HasNextPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_HasNextPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.HasNextPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_HasNextPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.HasPreviousPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_HasPreviousPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.HasPreviousPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_HasPreviousPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.IsFirstPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_IsFirstPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.IsFirstPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_IsFirstPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.IsLastPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_IsLastPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.IsLastPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_IsLastPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.LastItemOnPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_LastItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.LastItemOnPageSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_LastItemOnPage(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.PageCountGet">
+            <summary>Sets the shim of PagedListMetaData.get_PageCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.PageCountSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_PageCount(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.PageNumberGet">
+            <summary>Sets the shim of PagedListMetaData.get_PageNumber()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.PageNumberSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_PageNumber(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.PageSizeGet">
+            <summary>Sets the shim of PagedListMetaData.get_PageSize()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.PageSizeSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_PageSize(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.TotalItemCountGet">
+            <summary>Sets the shim of PagedListMetaData.get_TotalItemCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.TotalItemCountSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_TotalItemCount(Int32 value)</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimPagedListMetaData.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.FirstItemOnPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_FirstItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.FirstItemOnPageSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_FirstItemOnPage(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.HasNextPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_HasNextPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.HasNextPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_HasNextPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.HasPreviousPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_HasPreviousPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.HasPreviousPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_HasPreviousPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.IsFirstPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_IsFirstPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.IsFirstPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_IsFirstPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.IsLastPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_IsLastPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.IsLastPageSetBoolean">
+            <summary>Sets the shim of PagedListMetaData.set_IsLastPage(Boolean value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.LastItemOnPageGet">
+            <summary>Sets the shim of PagedListMetaData.get_LastItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.LastItemOnPageSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_LastItemOnPage(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.PageCountGet">
+            <summary>Sets the shim of PagedListMetaData.get_PageCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.PageCountSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_PageCount(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.PageNumberGet">
+            <summary>Sets the shim of PagedListMetaData.get_PageNumber()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.PageNumberSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_PageNumber(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.PageSizeGet">
+            <summary>Sets the shim of PagedListMetaData.get_PageSize()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.PageSizeSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_PageSize(Int32 value)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.TotalItemCountGet">
+            <summary>Sets the shim of PagedListMetaData.get_TotalItemCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimPagedListMetaData.AllInstances.TotalItemCountSetInt32">
+            <summary>Sets the shim of PagedListMetaData.set_TotalItemCount(Int32 value)</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimStaticPagedList`1">
+            <summary>Shim type of PagedList.StaticPagedList`1</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.#ctor(PagedList.StaticPagedList{`0})">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.Bind(PagedList.IPagedList)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.Bind(PagedList.IPagedList{`0})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.Bind(System.Collections.IEnumerable)">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="M:PagedList.Fakes.ShimStaticPagedList`1.Bind(System.Collections.Generic.IEnumerable{`0})">
+            <summary>Binds the members of the interface to the shim.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimStaticPagedList`1.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimStaticPagedList`1.ConstructorIEnumerableOfT0IPagedList">
+            <summary>Sets the shim of StaticPagedList`1.StaticPagedList`1(IEnumerable`1&lt;!0&gt; subset, IPagedList metaData)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.ShimStaticPagedList`1.ConstructorIEnumerableOfT0Int32Int32Int32">
+            <summary>Sets the shim of StaticPagedList`1.StaticPagedList`1(IEnumerable`1&lt;!0&gt; subset, Int32 pageNumber, Int32 pageSize, Int32 totalItemCount)</summary>
+        </member>
+        <member name="T:PagedList.Fakes.ShimStaticPagedList`1.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:PagedList.Fakes.StubBasePagedList`1">
+            <summary>Stub type of PagedList.BasePagedList`1</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubBasePagedList`1.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubBasePagedList`1.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubBasePagedList`1.InitializeStub">
+            <summary>Initializes a new instance of type StubBasePagedList</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubBasePagedList`1.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubBasePagedList`1.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubBasePagedList`1.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:PagedList.Fakes.StubIPagedList">
+            <summary>Stub type of PagedList.IPagedList</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubIPagedList.#ctor">
+            <summary>Initializes a new instance of type StubIPagedList</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.FirstItemOnPageGet">
+            <summary>Sets the stub of IPagedList.get_FirstItemOnPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.HasNextPageGet">
+            <summary>Sets the stub of IPagedList.get_HasNextPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.HasPreviousPageGet">
+            <summary>Sets the stub of IPagedList.get_HasPreviousPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.IsFirstPageGet">
+            <summary>Sets the stub of IPagedList.get_IsFirstPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.IsLastPageGet">
+            <summary>Sets the stub of IPagedList.get_IsLastPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.LastItemOnPageGet">
+            <summary>Sets the stub of IPagedList.get_LastItemOnPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.PageCountGet">
+            <summary>Sets the stub of IPagedList.get_PageCount()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.PageNumberGet">
+            <summary>Sets the stub of IPagedList.get_PageNumber()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.PageSizeGet">
+            <summary>Sets the stub of IPagedList.get_PageSize()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList.TotalItemCountGet">
+            <summary>Sets the stub of IPagedList.get_TotalItemCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#FirstItemOnPage">
+            <summary>Sets the stub of IPagedList.get_FirstItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#HasNextPage">
+            <summary>Sets the stub of IPagedList.get_HasNextPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#HasPreviousPage">
+            <summary>Sets the stub of IPagedList.get_HasPreviousPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#IsFirstPage">
+            <summary>Sets the stub of IPagedList.get_IsFirstPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#IsLastPage">
+            <summary>Sets the stub of IPagedList.get_IsLastPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#LastItemOnPage">
+            <summary>Sets the stub of IPagedList.get_LastItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#PageCount">
+            <summary>Sets the stub of IPagedList.get_PageCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#PageNumber">
+            <summary>Sets the stub of IPagedList.get_PageNumber()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#PageSize">
+            <summary>Sets the stub of IPagedList.get_PageSize()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList.pl::PagedList#IPagedList#TotalItemCount">
+            <summary>Sets the stub of IPagedList.get_TotalItemCount()</summary>
+        </member>
+        <member name="T:PagedList.Fakes.StubIPagedList`1">
+            <summary>Stub type of PagedList.IPagedList`1</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubIPagedList`1.#ctor">
+            <summary>Initializes a new instance of type StubIPagedList</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.CountGet">
+            <summary>Sets the stub of IPagedList`1.get_Count()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.FirstItemOnPageGet">
+            <summary>Sets the stub of IPagedList.get_FirstItemOnPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.GetEnumerator">
+            <summary>Sets the stub of IEnumerable`1.GetEnumerator()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.GetEnumerator01">
+            <summary>Sets the stub of IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.GetMetaData">
+            <summary>Sets the stub of IPagedList`1.GetMetaData()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.HasNextPageGet">
+            <summary>Sets the stub of IPagedList.get_HasNextPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.HasPreviousPageGet">
+            <summary>Sets the stub of IPagedList.get_HasPreviousPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.IsFirstPageGet">
+            <summary>Sets the stub of IPagedList.get_IsFirstPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.IsLastPageGet">
+            <summary>Sets the stub of IPagedList.get_IsLastPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.ItemGetInt32">
+            <summary>Sets the stub of IPagedList`1.get_Item(Int32 index)</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.LastItemOnPageGet">
+            <summary>Sets the stub of IPagedList.get_LastItemOnPage()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.PageCountGet">
+            <summary>Sets the stub of IPagedList.get_PageCount()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.PageNumberGet">
+            <summary>Sets the stub of IPagedList.get_PageNumber()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.PageSizeGet">
+            <summary>Sets the stub of IPagedList.get_PageSize()</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList{T}#GetMetaData">
+            <summary>Sets the stub of IPagedList`1.GetMetaData()</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubIPagedList`1.global::System#Collections#Generic#IEnumerable{T}#GetEnumerator">
+            <summary>Sets the stub of IEnumerable`1.GetEnumerator()</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubIPagedList`1.global::System#Collections#IEnumerable#GetEnumerator">
+            <summary>Sets the stub of IEnumerable.GetEnumerator()</summary>
+        </member>
+        <member name="F:PagedList.Fakes.StubIPagedList`1.TotalItemCountGet">
+            <summary>Sets the stub of IPagedList.get_TotalItemCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList{T}#Count">
+            <summary>Sets the stub of IPagedList`1.get_Count()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#FirstItemOnPage">
+            <summary>Sets the stub of IPagedList.get_FirstItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#HasNextPage">
+            <summary>Sets the stub of IPagedList.get_HasNextPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#HasPreviousPage">
+            <summary>Sets the stub of IPagedList.get_HasPreviousPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#IsFirstPage">
+            <summary>Sets the stub of IPagedList.get_IsFirstPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#IsLastPage">
+            <summary>Sets the stub of IPagedList.get_IsLastPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.PagedList#IPagedList{T}#Item(System.Int32)">
+            <summary>Sets the stub of IPagedList`1.get_Item(Int32 index)</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#LastItemOnPage">
+            <summary>Sets the stub of IPagedList.get_LastItemOnPage()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#PageCount">
+            <summary>Sets the stub of IPagedList.get_PageCount()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#PageNumber">
+            <summary>Sets the stub of IPagedList.get_PageNumber()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#PageSize">
+            <summary>Sets the stub of IPagedList.get_PageSize()</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubIPagedList`1.pl::PagedList#IPagedList#TotalItemCount">
+            <summary>Sets the stub of IPagedList.get_TotalItemCount()</summary>
+        </member>
+        <member name="T:PagedList.Fakes.StubPagedList`1">
+            <summary>Stub type of PagedList.PagedList`1</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubPagedList`1.#ctor(System.Linq.IQueryable{`0},System.Int32,System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubPagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubPagedList`1.InitializeStub">
+            <summary>Initializes a new instance of type StubPagedList</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubPagedList`1.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubPagedList`1.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubPagedList`1.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:PagedList.Fakes.StubPagedListMetaData">
+            <summary>Stub type of PagedList.PagedListMetaData</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubPagedListMetaData.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubPagedListMetaData.#ctor(PagedList.IPagedList)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubPagedListMetaData.InitializeStub">
+            <summary>Initializes a new instance of type StubPagedListMetaData</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubPagedListMetaData.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubPagedListMetaData.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubPagedListMetaData.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:PagedList.Fakes.StubStaticPagedList`1">
+            <summary>Stub type of PagedList.StaticPagedList`1</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubStaticPagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},PagedList.IPagedList)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubStaticPagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Int32,System.Int32,System.Int32)">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:PagedList.Fakes.StubStaticPagedList`1.InitializeStub">
+            <summary>Initializes a new instance of type StubStaticPagedList</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubStaticPagedList`1.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubStaticPagedList`1.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:PagedList.Fakes.StubStaticPagedList`1.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+    </members>
+</doc>

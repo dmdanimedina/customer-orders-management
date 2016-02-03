@@ -1,0 +1,46 @@
+﻿@model sistema_fichas.Business.Patente
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<div class="row">
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Pedido_ID)
+    @Html.HiddenFor(mode => Model.Cliente_ID)
+    @Html.HiddenFor(mode => Model.ID)
+    @Html.HiddenFor(model => model.Estado)
+
+    <div class="form-horizontal">
+        <div class="col-xs-12 col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Numero, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Numero, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Numero, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estado, new { @class = " control-label col-md-2" })
+                <div class="col-md-10">
+                    <input value="Activo" class="form-control" readonly/>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comentario, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Comentario, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Comentario, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+ </div>  
+
+        
+
+

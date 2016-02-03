@@ -1,0 +1,101 @@
+﻿@model IEnumerable<sistema_fichas.Business.Pedido>
+
+@{
+    ViewBag.Title = "Productos/ Servicios";
+}
+
+<h2>Pedidos</h2>
+<hr />
+<section id="busqueda" style="margin-top:20px">
+    <div class="row-fluid">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Busqueda Avanzada</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    @using (Html.BeginForm("Index", "Pedido", null, FormMethod.Get, new { @class = "navbar-form navbar-right form-inline", @for = "form" }))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("busqueda", "", new { @class = "form-control", @placeholder = "Ingrese un filtro" })
+
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary">
+                                <span class="glyphicon glyphicon-search"> </span>
+                                Buscar
+                            </button>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </nav>
+    </div>
+</section>
+<table class="table table-condensed table-hover table-striped table-bordered">
+    <tr>
+        <th class="text-center">
+            #
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Cliente.NombreFantasia)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Cliente.Rut)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.UserProfile)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.EstadoPedido)
+        </th>
+        <th class="text-center">
+            Resumen
+        </th>
+        <th></th>
+    </tr>
+    @if (!Model.Any()) {
+        <tr><td class="text-center" colspan="10"><span class="text-danger">No se encontraron registros</span></td></tr>
+    } else {
+    foreach (var item in Model.OrderByDescending(x => x.ID))
+    {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Cliente.NombreFantasia)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Cliente.Rut)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.UserProfile.UserName)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td class="text-center">
+                <label class="label label-default">
+                    @Html.DisplayFor(modelItem => item.EstadoPedido.Nombre)
+                </label>
+            </td>
+            <td class="text-left">
+                
+                <label class="label label-success">@item.PedidosDetalle.Where(x => x.Tipo == 1 && x.EstadoDetalle.Estado != sistema_fichas.Business.TipoEstadoDetalle.Inactivo.GetHashCode()).Count()</label> Servicios<br />
+                <label class="label label-info">@item.PedidosDetalle.Where(x => x.Tipo == 2 && x.EstadoDetalle.Estado != sistema_fichas.Business.TipoEstadoDetalle.Inactivo.GetHashCode()).Count()</label> Productos <br />
+                <label class="label label-primary">@item.PedidosDetalle.Where(x => x.Tipo == 4 && x.EstadoDetalle.Estado == sistema_fichas.Business.TipoEstadoDetalle.Finalizado.GetHashCode()).Count() / @item.PedidosDetalle.Where(x => x.Tipo == 4 && x.EstadoDetalle.Estado != sistema_fichas.Business.TipoEstadoDetalle.Inactivo.GetHashCode()).Count()</label> Actividades
+            </td>
+            <td class="text-center">
+                <a href="@Url.Action("Details", "Pedido", new { id = item.ID })">
+                    <button class="btn btn-primary"><span class="fa fa-chevron-circle-right"></span></button>
+                </a>
+            </td>
+        </tr>
+    }
+    }
+</table>

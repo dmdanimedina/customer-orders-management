@@ -1,0 +1,64 @@
+﻿@model sistema_fichas.Business.Contacto
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(mode=>Model.Cliente_ID)
+        @Html.HiddenFor(mode=>Model.ID)
+        @Html.HiddenFor(mode => Model.Estado)
+
+        @Html.ValidationSummary(true)
+        <div class="form-horizontal">
+            <div class="col-xs-12 col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombres, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Nombres, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Nombres, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cargo, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Cargo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Cargo, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                </div>
+            <div class="col-xs-12 col-md-6">
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Celular, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Celular, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Celular, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Tipo, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.Tipo, ContactoHelper.getTiposAsSelectList(0), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Tipo, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+
+    }
+    </div>

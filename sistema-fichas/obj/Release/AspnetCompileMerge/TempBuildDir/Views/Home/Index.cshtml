@@ -1,0 +1,38 @@
+﻿
+    @{
+        ViewBag.Title = "Home Page";
+    } 
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <h1 class="text-danger"> EN CONSTRUCCIÓN</h1>
+        <p class="lead">Sistema de Fichas 2.0</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Contáctenos</a></p>
+    </div>
+
+    <!-- Example row of columns -->
+    
+        <div class="row-fluid">
+            <div class="col-xs-3 col-xs-offset-1">
+                <div><h2><i class="fa fa-area-chart fa-2x"></i></h2></div>
+                <div><p class="">Estadisticas »</p></div>
+            </div>
+            <div class="col-xs-3 col-xs-offset-1">
+                <div class=""><h2 class=""><i class="fa fa-globe fa-2x"></i></h2></div>
+                <div class=""><p class="">Seguimiento »</p></div>
+            </div>
+            <div class="col-xs-3 col-xs-offset-1">
+                <div class=""><h2 class=""><i class="fa fa-calendar fa-2x"></i></h2></div>
+                <div class=""><p class="">Control »</p></div>
+            </div>    
+        </div>
+
+
+
+<script>
+    $(document).ready(function () {
+        $.getJSON('http://control.samtech.cl/WebApi/api/Pedido', function (data) {
+            console.log(data)
+        });
+    });
+
+</script>

@@ -1,0 +1,47 @@
+﻿@model sistema_fichas.Business.PedidoDetalle
+
+<div class="row">
+    <div class="col-md-10">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.Cantidad)</dt>
+            <dd>@Html.DisplayFor(model => model.Cantidad)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Valor)</dt>
+            <dd>@Html.DisplayFor(model => model.Valor) <label class="label label-default">@Html.DisplayFor(model => model.Moneda.Alias)</label></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Pedido_ID)</dt>
+            <dd>@Html.DisplayFor(model => model.Pedido_ID)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.FechaInicio)</dt>
+            <dd>@Html.DisplayFor(model => model.FechaInicio)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.FechaTermino)</dt>
+            <dd>@Html.DisplayFor(model => model.FechaTermino)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.EstadoDetalle_ID)</dt>
+            <dd><label class="label label-default">@Html.DisplayFor(model => model.EstadoDetalle.Nombre)</label></dd>
+
+            
+        </dl>
+
+        <dl class="dl-horizontal">
+
+            <dt>@Html.DisplayNameFor(model => model.Catalogo_ID)</dt>
+            <dd><label class="label label-default">@Html.DisplayFor(model => model.Catalogo.Nombre)</label></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Herramienta_ID)</dt>
+            <dd><label class="label label-default">@Html.DisplayFor(model => model.Herramienta.Nombre)</label></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Modalidad_ID)</dt>
+            <dd><label class="label label-default">@Html.DisplayFor(model => model.Modalidad.Nombre)</label></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Comentario)</dt>
+            <dd class="well" style="margin-top:5px">@Html.DisplayFor(model => model.Comentario)</dd>
+            
+            
+        </dl>
+    </div>
+    
+</div>
+
+

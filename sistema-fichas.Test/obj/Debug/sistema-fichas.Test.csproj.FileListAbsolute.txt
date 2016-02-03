@@ -1,0 +1,5 @@
+C:\Samtech\sistema-fichas\sistema-fichas.Test\bin\Debug\sistema-fichas.Test.dll
+C:\Samtech\sistema-fichas\sistema-fichas.Test\bin\Debug\sistema-fichas.Test.pdb
+C:\Samtech\sistema-fichas\sistema-fichas.Test\obj\Debug\sistema-fichas.Test.csprojResolveAssemblyReference.cache
+C:\Samtech\sistema-fichas\sistema-fichas.Test\obj\Debug\sistema-fichas.Test.dll
+C:\Samtech\sistema-fichas\sistema-fichas.Test\obj\Debug\sistema-fichas.Test.pdb

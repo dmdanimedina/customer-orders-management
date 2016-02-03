@@ -1,0 +1,51 @@
+﻿@model sistema_fichas.Business.Pedido
+
+
+<div class="col-xs-12 col-md-12">
+    <div class="form-group pull-right">
+        @if (PedidoHelper.esEditable(Model.EstadoPedido.Estado))
+        {
+
+            if (ViewBag.iSOwner)
+            {
+                <a href="#" id="editar_pedido" data-toggle="modal" data-target="#modal_contenido" data-id="@Model.ID">
+                    @Html.BSbutton("info btn-sm", "Editar info", "check")
+                </a>
+                <a href="#" class="cambiar_estado" data-id="@Model.ID" data-text="enviar a revisión" data-action="@sistema_fichas.Business.TipoEstadoPedido.Revision.GetHashCode()">
+                    @Html.BSbutton("primary btn-sm", "Enviar a revisión", "paper-plane")
+                </a>
+            }
+
+
+        }
+        else if (PedidoHelper.esEvaluable(Model.EstadoPedido.Estado) && AuthorizationHelper.isAdministradorComercial(User))
+        {
+            <a href="#" class="cambiar_estado" data-id="@Model.ID" data-text="rechazar" data-action="@sistema_fichas.Business.TipoEstadoPedido.Rechazado_Comercial.GetHashCode()">
+                @Html.BSbutton("warning btn-sm", "Rechazar pedido", "ban")
+            </a>
+            <a href="#" class="cambiar_estado" data-id="@Model.ID" data-text="aceptar" data-action="@sistema_fichas.Business.TipoEstadoPedido.Aprobado_Comercial.GetHashCode()">
+                @Html.BSbutton("success btn-sm ", "Aceptar pedido", "check")
+            </a>
+        }
+
+
+        @if (PedidoHelper.esAnulado(Model.EstadoPedido.Estado))
+        {
+
+            <button class="btn btn-success btn-sm cambiar_estado" data-id="@Model.ID" data-text="activar" data-action="@sistema_fichas.Business.TipoEstadoPedido.Ingresado.GetHashCode()">
+                <span class="fa fa-check"></span> Activar Pedido
+            </button>
+
+        }
+        
+        @if (PedidoHelper.EstadoAnulable(Model.EstadoPedido.Estado))
+        {
+
+            <button class="btn btn-danger btn-sm cambiar_estado" data-id="@Model.ID" data-text="anular" data-action="@sistema_fichas.Business.TipoEstadoPedido.Inactivo.GetHashCode()">
+                <span class="fa fa-check"></span> Anular Pedido
+            </button>
+        }
+
+
+      </div>
+</div>

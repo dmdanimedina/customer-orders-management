@@ -1,0 +1,126 @@
+﻿@model sistema_fichas.ViewModels.PedidoViewModel
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="~/Scripts/select2.js"></script>
+<link href="~/Content/select2.css" rel="stylesheet" />
+<link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
+
+<div class="row-fluid">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.PedidoDetalle.Pedido_ID)
+        @Html.HiddenFor(model => model.PedidoDetalle.ID)
+        @Html.HiddenFor(model => model.PedidoDetalle.EstadoDetalle_ID)
+        @Html.HiddenFor(model => model.TipoDetalle)
+        @Html.HiddenFor(model => model.PedidoDetalle.Tipo)
+
+   <div class="form-group">
+        @Html.LabelFor(model => model.Productos, new { @class = "control-label col-md-2"})
+        <div class="col-md-8">
+            @Html.DropDownListFor(model => model.PedidoDetalle.Catalogo_ID, Model.ListaProductos, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Productos, null, new { @class="text-danger"})
+        </div>
+    </div>
+            
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.Cantidad, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PedidoDetalle.Cantidad, new { @class = "form-control" , @placeholder="Ingresar cantidad (Ejem: 1)"})
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.Cantidad, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.Valor, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.PedidoDetalle.Valor, new { @class = "form-control col-sm-1", @placeholder = "Ingrese Valor" })
+
+                <span class="input-group-addon">
+                    @Html.DropDownListFor(model => model.PedidoDetalle.Moneda_ID, Model.ListaMonedas, new { @class = "" })
+                </span>
+            </div>
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.Valor, null, new { @class = "text-danger" })
+        </div>
+
+    </div>
+        <div class="form-group">
+        @Html.LabelFor(model => model.Modalidades, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.DropDownListFor(model => model.PedidoDetalle.Modalidad_ID, Model.ListaModalidades, new { @class = "form-control", @onchange = "ciclo_fechas(this.value);" })
+            @Html.ValidationMessageFor(model => model.Modalidades, null, new { @class = "text-danger" })
+        </div>
+    </div>
+        
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.TipoCobro, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.DropDownListFor(model => model.PedidoDetalle.TipoCobro, Model.ListaTipoCobro, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.TipoCobro, null, new { @class = "text-danger" })
+        </div>
+    </div>
+                
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.FechaInicio, "Fecha", new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PedidoDetalle.FechaInicio, String.Format("{0:dd/MM/yyyy H:mm:ss}", Model.PedidoDetalle.FechaInicio), new { @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.FechaInicio, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div id="div_fecha_termino" class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.FechaTermino,"Fecha fin ciclo", new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PedidoDetalle.FechaTermino, new { @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.FechaTermino, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.Comentario, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextAreaFor(model => model.PedidoDetalle.Comentario, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.Comentario, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    }
+
+</div>
+<script>
+    function ciclo_fechas(VALUE) {
+        if (VALUE === "1") {
+            $("#div_fecha_termino").removeClass().addClass("form-group hidden")
+        } else {
+            $("#div_fecha_termino").removeClass().addClass("form-group")
+        }
+
+
+    }
+    $(function () {
+
+        dateInicio = $('#@Html.IdFor(model => model.PedidoDetalle.FechaInicio)');
+        dateTermino = $('#@Html.IdFor(model => model.PedidoDetalle.FechaTermino)');
+
+        dateTermino.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+        dateInicio.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+
+        dateInicio.on("dp.change", function (e) {
+            dateTermino.data("DateTimePicker").minDate(e.date);
+        });
+        dateTermino.on("dp.change", function (e) {
+            dateInicio.data("DateTimePicker").maxDate(e.date);
+        });
+
+        modalidadID = $('#@Html.IdFor(model => model.PedidoDetalle.Modalidad_ID)').val();
+        ciclo_fechas(modalidadID);
+
+        $('#@Html.IdFor(model => model.PedidoDetalle.Catalogo_ID)').select2();
+    });
+</script>

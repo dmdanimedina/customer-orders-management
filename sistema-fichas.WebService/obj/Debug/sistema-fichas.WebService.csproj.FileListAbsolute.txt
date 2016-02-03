@@ -1,0 +1,6 @@
+C:\Samtech\sistema-fichas\sistema-fichas.WebService\bin\sistema-fichas.WebService.dll.config
+C:\Samtech\sistema-fichas\sistema-fichas.WebService\bin\sistema-fichas.WebService.dll
+C:\Samtech\sistema-fichas\sistema-fichas.WebService\bin\sistema-fichas.WebService.pdb
+C:\Samtech\sistema-fichas\sistema-fichas.WebService\obj\Debug\sistema-fichas.WebService.csprojResolveAssemblyReference.cache
+C:\Samtech\sistema-fichas\sistema-fichas.WebService\obj\Debug\sistema-fichas.WebService.dll
+C:\Samtech\sistema-fichas\sistema-fichas.WebService\obj\Debug\sistema-fichas.WebService.pdb

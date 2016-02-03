@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6424CBA0-002F-4016-8DD4-E676F8A437A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sistema_fichas.Repository</RootNamespace>
+    <AssemblyName>sistema-fichas.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdjuntoRepository.cs" />
+    <Compile Include="CatalogoRepository.cs" />
+    <Compile Include="ClienteRepository.cs" />
+    <Compile Include="ContactoRepository.cs" />
+    <Compile Include="DireccionRepository.cs" />
+    <Compile Include="EstadoDetalleRepository.cs" />
+    <Compile Include="EstadoPedidoRepository.cs" />
+    <Compile Include="HerramientaRepository.cs" />
+    <Compile Include="IndustriaRepository.cs" />
+    <Compile Include="ModalidadRepository.cs" />
+    <Compile Include="MonedaRepository.cs" />
+    <Compile Include="PatenteRepository.cs" />
+    <Compile Include="PedidoDetalleRepository.cs" />
+    <Compile Include="PedidoRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoClienteRepository.cs" />
+    <Compile Include="UsuarioRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sistema-fichas.Business.Core\sistema-fichas.Business.Core.csproj">
+      <Project>{7dc65124-eccf-453c-8c7a-22e7529251eb}</Project>
+      <Name>sistema-fichas.Business.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sistema-fichas.Business\sistema-fichas.Business.csproj">
+      <Project>{24bfd038-9194-47ad-ae6b-82582b5e267e}</Project>
+      <Name>sistema-fichas.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sistema-fichas.Repository.Core\sistema-fichas.Repository.Core.csproj">
+      <Project>{af8e5579-7f42-4612-9a92-df8e0fa401f1}</Project>
+      <Name>sistema-fichas.Repository.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,41 @@
+﻿<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>SAMTECH SA</h1>
+                
+            </hgroup>
+            
+            
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h2>REST API - ASP.NET Web API 4.0.</h2>
+        <p>
+            Sistema de Fichas Desarrolado en ASP.NET Web API, permite exponer la aplicacion, datos y servicios hacia la Web sobre HTTP.
+        </p>
+        <ol class="round">
+            <li class="one">
+                <h5>Documentación</h5>
+                Detalle de los verbos disponibles en esta API<p></p>
+                <p>
+                    <a>@Html.ActionLink("Ver Mas", "Index", "Help", new { area = "" }, null)</a>
+                </p>
+            </li>
+        </ol>
+    </section>
+</div>
+
+@section Scripts{
+<script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: "http://localhost:49526/api/Actividad",
+                type: "POST",
+                data: {id: 46, estado: @sistema_fichas.Business.TipoEstadoDetalle.Finalizado.GetHashCode()}
+
+            });
+        })
+
+</script>
+    }

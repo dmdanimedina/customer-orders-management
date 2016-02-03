@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Sistema de Fichas 2.0 - SAMTECH SA</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/bootstrapBundler")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+
+        @Scripts.Render("~/bundles/DateTimePicker")
+        @Styles.Render("~/Content/DateTimePicker")
+        @Scripts.Render("~/bundles/BoostrapSwitch")
+        @Styles.Render("~/Content/BoostrapSwitch")
+        
+        </head>
+        <body>
+
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><i class="fa fa-globe"></i> SAMTECH</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                       @if (AuthorizationHelper.isComercial(User))
+                       {
+                        <li class="">
+                            <a href="@Url.Action("Index","Cliente")"><i class="fa fa-users"></i> Clientes</a>
+                        </li>
+                        <li class="">
+                            <a href="@Url.Action("Index","Pedido")">
+                                <i class="fa fa-shopping-cart"></i> Pedidos
+                            </a>
+                        </li>
+                       }
+                       else if (AuthorizationHelper.isOperaciones(User))
+                       {
+                        <li class="">
+                            <a href="@Url.Action("Index","Operaciones")">
+                                <i class="fa fa-shopping-cart"></i> Pedidos
+                            </a>
+                        </li>
+                       }
+                       else if (AuthorizationHelper.isAdministrador(User))
+                       {
+                        <li class="">
+                            <a href="@Url.Action("Index","Cliente")"><i class="fa fa-users"></i> Clientes</a>
+                        </li>
+                        <li class="">
+                            <a href="@Url.Action("Index","Pedido")">
+                                <i class="fa fa-shopping-cart"></i> Pedidos
+                            </a>
+                        </li>
+                       }
+                       else
+                       {
+
+                       } 
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    @if (Request.IsAuthenticated)
+                                {
+                                    <li>@Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })</li>
+                                    <li class="divider"></li>
+                                    <li>
+
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, htmlAttributes: new { id = "logoutForm", @class = "navbar-form" }))
+                                        {
+                                            <button type="submit" class="btn-link">Log Off</button>
+                                            @Html.AntiForgeryToken()
+                                        }
+
+    </li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                                }
+
+</ul>
+
+
+
+
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="">
+    <div class="" style="margin-top:70px">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+        <div class="row-fluid">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-home"></i> Inicio </a></li>
+                    <li><a href="@Url.Action(null)">@System.Web.HttpContext.Current.Request.RequestContext.RouteData.GetRequiredString("controller")</a></li>
+                    <li class="active">@ViewBag.Title</li>
+                </ol>
+            </div>
+            <div class=" col-xs-12">
+                @RenderBody()
+            </div>
+            
+        </div>
+            
+        </section>
+        <!-- Begin Modal -->
+        <div class="modal" id="modal_contenido" role="dialog" aria-labelledby="modal_label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="modal_label">Gestión de clientes &amp; Requerimientos</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modal_alert" class="alert alert-success hidden" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Cerrar</span>
+                            </button>
+                            <div id="alert_body"></div>
+                        </div>
+                        <div id="modal_body"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="boton_cerrar" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button id="boton_guardar" type="button" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+    </div>
+</div>
+
+
+        @Scripts.Render("~/bundles/bootstrap")
+
+<script type="text/javascript">
+    /**
+    Función para restablecer la configuracion inicial del modal y setearle un titulo
+    */
+    function resetModal(TEXTO) {
+        $('#boton_guardar').removeClass("hidden").show();
+        $('#modal_alert').addClass('hidden');
+        $('#alert_body').text("");
+        $("#modal_label").text(TEXTO);
+        $("#modal_body").html('<div class="text-center"> <i class="fa fa-spinner fa-spin fa-5x"></i> <br> Cargando...</div>');
+    }
+
+    function lockModalInputs() {
+        $("#modal_body .form-control ").each(function () {
+            $(this).attr('disabled', true);
+        });
+    }
+
+    function msg_modal_alert(msg, type) {
+        $('#modal_alert').addClass('hidden');
+        $('#modal_alert').removeClass().addClass('alert');
+        $("#alert_body").html(msg);
+        $("#modal_alert").addClass('alert-'+type).show();
+
+    }
+    function contenidoElemento(elemento, contenidoElemento, classAdd, classRemove) {
+        if (elemento === null) {
+            return false;
+        }
+        if (!(classAdd === null)) {
+            elemento.addClass(classAdd);
+        }
+        if (!(classRemove === null)) {
+            elemento.removeClass(classRemove);
+        }
+        elemento.html(contenidoElemento);
+    }
+
+        </script>
+
+        @RenderSection("scripts", required: false)
+        
+
+    </body>
+</html>

@@ -1,0 +1,144 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Presentation", "1 Presentation", "{D7939CC6-BA61-4EFB-A978-6F7D24F2800D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Service", "2 Service", "{DC1072FB-FF5F-4715-BCF7-F58DD9EC674F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Business", "3 Business", "{2A66C1FB-6F35-428B-8173-15F6B8C9C76A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4  Repository", "4  Repository", "{46D2EB56-33E4-47A7-B626-533CD2D94CDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 Test", "5 Test", "{38991D59-0313-4A92-BE37-82588BF4D3E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Presentation", "sistema-fichas\sistema-fichas.Presentation.csproj", "{1B7C819D-6B9B-4F89-862B-6EF4CE916769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Service.Core", "sistema-fichas.Service.Core\sistema-fichas.Service.Core.csproj", "{F8A169DE-39C1-47D0-B3E0-6313F6D69E8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Service", "sistema-fichas.Service\sistema-fichas.Service.csproj", "{E07E61D4-8C82-4915-BD11-3F2EAE989BEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Business.Core", "sistema-fichas.Business.Core\sistema-fichas.Business.Core.csproj", "{7DC65124-ECCF-453C-8C7A-22E7529251EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Business", "sistema-fichas.Business\sistema-fichas.Business.csproj", "{24BFD038-9194-47AD-AE6B-82582B5E267E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Repository.Core", "sistema-fichas.Repository.Core\sistema-fichas.Repository.Core.csproj", "{AF8E5579-7F42-4612-9A92-DF8E0FA401F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Repository", "sistema-fichas.Repository\sistema-fichas.Repository.csproj", "{6424CBA0-002F-4016-8DD4-E676F8A437A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.Test", "sistema-fichas.Test\sistema-fichas.Test.csproj", "{F424CEF8-865D-4494-9387-2835BFCC134C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema-fichas.WebService", "sistema-fichas.WebService\sistema-fichas.WebService.csproj", "{6011F4F5-EB07-4368-B851-09E3B10B03F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sistema_fichas.WebApi", "sistema-fichas.WebApi\sistema_fichas.WebApi.csproj", "{10BEB50F-0910-424F-921D-021655571288}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B7C819D-6B9B-4F89-862B-6EF4CE916769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7C819D-6B9B-4F89-862B-6EF4CE916769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7C819D-6B9B-4F89-862B-6EF4CE916769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7C819D-6B9B-4F89-862B-6EF4CE916769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A169DE-39C1-47D0-B3E0-6313F6D69E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A169DE-39C1-47D0-B3E0-6313F6D69E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A169DE-39C1-47D0-B3E0-6313F6D69E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A169DE-39C1-47D0-B3E0-6313F6D69E8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E07E61D4-8C82-4915-BD11-3F2EAE989BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E07E61D4-8C82-4915-BD11-3F2EAE989BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E07E61D4-8C82-4915-BD11-3F2EAE989BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E07E61D4-8C82-4915-BD11-3F2EAE989BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DC65124-ECCF-453C-8C7A-22E7529251EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC65124-ECCF-453C-8C7A-22E7529251EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC65124-ECCF-453C-8C7A-22E7529251EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC65124-ECCF-453C-8C7A-22E7529251EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24BFD038-9194-47AD-AE6B-82582B5E267E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24BFD038-9194-47AD-AE6B-82582B5E267E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24BFD038-9194-47AD-AE6B-82582B5E267E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24BFD038-9194-47AD-AE6B-82582B5E267E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8E5579-7F42-4612-9A92-DF8E0FA401F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8E5579-7F42-4612-9A92-DF8E0FA401F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8E5579-7F42-4612-9A92-DF8E0FA401F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8E5579-7F42-4612-9A92-DF8E0FA401F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6424CBA0-002F-4016-8DD4-E676F8A437A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6424CBA0-002F-4016-8DD4-E676F8A437A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6424CBA0-002F-4016-8DD4-E676F8A437A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6424CBA0-002F-4016-8DD4-E676F8A437A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F424CEF8-865D-4494-9387-2835BFCC134C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F424CEF8-865D-4494-9387-2835BFCC134C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F424CEF8-865D-4494-9387-2835BFCC134C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F424CEF8-865D-4494-9387-2835BFCC134C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6011F4F5-EB07-4368-B851-09E3B10B03F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6011F4F5-EB07-4368-B851-09E3B10B03F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6011F4F5-EB07-4368-B851-09E3B10B03F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6011F4F5-EB07-4368-B851-09E3B10B03F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10BEB50F-0910-424F-921D-021655571288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BEB50F-0910-424F-921D-021655571288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BEB50F-0910-424F-921D-021655571288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BEB50F-0910-424F-921D-021655571288}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1B7C819D-6B9B-4F89-862B-6EF4CE916769} = {D7939CC6-BA61-4EFB-A978-6F7D24F2800D}
+		{F8A169DE-39C1-47D0-B3E0-6313F6D69E8F} = {DC1072FB-FF5F-4715-BCF7-F58DD9EC674F}
+		{E07E61D4-8C82-4915-BD11-3F2EAE989BEF} = {DC1072FB-FF5F-4715-BCF7-F58DD9EC674F}
+		{7DC65124-ECCF-453C-8C7A-22E7529251EB} = {2A66C1FB-6F35-428B-8173-15F6B8C9C76A}
+		{24BFD038-9194-47AD-AE6B-82582B5E267E} = {2A66C1FB-6F35-428B-8173-15F6B8C9C76A}
+		{AF8E5579-7F42-4612-9A92-DF8E0FA401F1} = {46D2EB56-33E4-47A7-B626-533CD2D94CDF}
+		{6424CBA0-002F-4016-8DD4-E676F8A437A4} = {46D2EB56-33E4-47A7-B626-533CD2D94CDF}
+		{F424CEF8-865D-4494-9387-2835BFCC134C} = {38991D59-0313-4A92-BE37-82588BF4D3E4}
+		{6011F4F5-EB07-4368-B851-09E3B10B03F8} = {D7939CC6-BA61-4EFB-A978-6F7D24F2800D}
+		{10BEB50F-0910-424F-921D-021655571288} = {D7939CC6-BA61-4EFB-A978-6F7D24F2800D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://samtech-desarrollo.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = sistema-fichas.Business.Core\\sistema-fichas.Business.Core.csproj
+		SccProjectTopLevelParentUniqueName1 = sistema-fichas.sln
+		SccProjectName1 = sistema-fichas.Business.Core
+		SccLocalPath1 = sistema-fichas.Business.Core
+		SccProjectUniqueName2 = sistema-fichas.Business\\sistema-fichas.Business.csproj
+		SccProjectTopLevelParentUniqueName2 = sistema-fichas.sln
+		SccProjectName2 = sistema-fichas.Business
+		SccLocalPath2 = sistema-fichas.Business
+		SccProjectUniqueName3 = sistema-fichas.Repository.Core\\sistema-fichas.Repository.Core.csproj
+		SccProjectTopLevelParentUniqueName3 = sistema-fichas.sln
+		SccProjectName3 = sistema-fichas.Repository.Core
+		SccLocalPath3 = sistema-fichas.Repository.Core
+		SccProjectUniqueName4 = sistema-fichas.Repository\\sistema-fichas.Repository.csproj
+		SccProjectTopLevelParentUniqueName4 = sistema-fichas.sln
+		SccProjectName4 = sistema-fichas.Repository
+		SccLocalPath4 = sistema-fichas.Repository
+		SccProjectUniqueName5 = sistema-fichas.Service.Core\\sistema-fichas.Service.Core.csproj
+		SccProjectTopLevelParentUniqueName5 = sistema-fichas.sln
+		SccProjectName5 = sistema-fichas.Service.Core
+		SccLocalPath5 = sistema-fichas.Service.Core
+		SccProjectUniqueName6 = sistema-fichas.Service\\sistema-fichas.Service.csproj
+		SccProjectTopLevelParentUniqueName6 = sistema-fichas.sln
+		SccProjectName6 = sistema-fichas.Service
+		SccLocalPath6 = sistema-fichas.Service
+		SccProjectUniqueName7 = sistema-fichas.Test\\sistema-fichas.Test.csproj
+		SccProjectTopLevelParentUniqueName7 = sistema-fichas.sln
+		SccProjectName7 = sistema-fichas.Test
+		SccLocalPath7 = sistema-fichas.Test
+		SccProjectUniqueName8 = sistema-fichas.WebApi\\sistema_fichas.WebApi.csproj
+		SccProjectTopLevelParentUniqueName8 = sistema-fichas.sln
+		SccProjectName8 = sistema-fichas.WebApi
+		SccLocalPath8 = sistema-fichas.WebApi
+		SccProjectUniqueName9 = sistema-fichas.WebService\\sistema-fichas.WebService.csproj
+		SccProjectTopLevelParentUniqueName9 = sistema-fichas.sln
+		SccProjectName9 = sistema-fichas.WebService
+		SccLocalPath9 = sistema-fichas.WebService
+		SccProjectUniqueName10 = sistema-fichas\\sistema-fichas.Presentation.csproj
+		SccProjectTopLevelParentUniqueName10 = sistema-fichas.sln
+		SccProjectName10 = sistema-fichas
+		SccLocalPath10 = sistema-fichas
+	EndGlobalSection
+EndGlobal

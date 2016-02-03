@@ -1,0 +1,98 @@
+﻿@model sistema_fichas.ViewModels.ClienteViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="row">
+
+@using (Html.BeginForm("EditModal", "Cliente", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.cliente.ID)
+
+    <div class="row-fluid form-horizontal">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.NombreFantasia, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.NombreFantasia, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.NombreFantasia)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.RazonSocial, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.RazonSocial, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.RazonSocial)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Rut, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.Rut, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Rut)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Giro, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.Giro, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Giro)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Telefono, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.Telefono, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Telefono)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.FechaCreacion, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.FechaCreacion, new { @class = "form-control datepicker" })
+                    @Html.ValidationMessageFor(model => model.cliente.FechaCreacion, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Industria, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.cliente.Industria_ID, Model.ListaIndustrias, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ListaIndustrias, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Estado, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.cliente.Estado, Model.ListaEstadoCliente, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ListaEstadoCliente, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.User_ID, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.cliente.User_ID, Model.ListaUsuarios, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ListaUsuarios, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            </div>
+    </div>
+}
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+            $(function () {
+                $('#@Html.IdFor(model => model.cliente.FechaCreacion)').datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+            });
+    });
+</script>

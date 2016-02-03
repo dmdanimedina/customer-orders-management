@@ -1,0 +1,67 @@
+﻿@model IEnumerable<sistema_fichas.Business.PedidoDetalle>
+
+<div class="row-fluid">
+    <table class="table table-bordered table-condensed table-striped table-hover">
+        <thead>
+            <tr class="text-center">
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Pedido_ID)
+                </th>
+                <th class="text-center">Correlativo</th>
+                <th class="col-xs-1 text-center">Cantidad</th>
+                <th class="col-xs-1 text-center">Valor</th>
+                <th class="col-xs-4 text-center">Servicio</th>
+                <th class="col-xs-2 text-center">Fecha Inicio</th>
+                <th class="col-xs-2 text-center">Fecha Termino</th>
+                <th class="col-xs-1 text-center">Estado</th>
+                <th class="col-xs-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!(Model.Count() > 0))
+            {
+                <tr>
+                    <td colspan="9" class="text-center">
+                        <span class="text-danger"> No se encontraron registros </span>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                int count = 1;
+                foreach (var item in Model)
+                {
+                    <tr id="servicios-@Html.DisplayFor(modelItem => item.ID)">
+                        <td class="text-center">
+                            @item.Pedido_ID
+                        </td>
+                        <td class="text-center">@(count++) </td>
+                        <td class="text-center"> @Html.DisplayFor(modelItem => item.Cantidad) </td>
+                        <td class="text-right"> @Html.DisplayFor(modelItem => item.Valor) <label class="label label-default">@Html.DisplayFor(modelItem => item.Moneda.Alias)</label></td>
+                        <td class="text-center"> @Html.DisplayFor(modelItem => item.Catalogo.Nombre) </td>
+                        <td class="text-center"> @Html.DisplayFor(modelItem => item.FechaInicio)</td>
+                        <td class="text-center"> @Html.DisplayFor(modelItem => item.FechaTermino)</td>
+                        <td class ="text-center"><label class="label @(PedidoHelper.getColorServicio(item.EstadoDetalle.Estado))">@Html.DisplayFor(modelItem => item.EstadoDetalle.Nombre)</label></td>
+                        <td class="text-center">
+                            @Html.botonVer(sistema_fichas.Business.TipoPedidoDetalle.Servicio.GetHashCode(), item.ID.ToString())
+                            @Html.botonEditar(sistema_fichas.Business.TipoPedidoDetalle.Servicio.GetHashCode(), item.ID.ToString()).If(PedidoHelper.esActivoEditable(item.EstadoDetalle.Estado, item.Pedido.EstadoPedido.Estado))
+                            @Html.botonEliminar(sistema_fichas.Business.TipoPedidoDetalle.Servicio.GetHashCode(), item.ID.ToString()).If(PedidoHelper.esActivoEditable(item.EstadoDetalle.Estado, item.Pedido.EstadoPedido.Estado))
+                            @Html.botonDeshabilitar(sistema_fichas.Business.TipoPedidoDetalle.Servicio.GetHashCode(), item.ID.ToString(), item.EstadoDetalle.Estado).If(PedidoHelper.esAprobadoOperaciones(item.EstadoDetalle.Estado, item.Pedido.EstadoPedido.Estado)).If(AuthorizationHelper.isAdministradorComercial(User))
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    
+<script>
+    $(document).ready(function () {
+        
+    })
+
+    </script>
+}

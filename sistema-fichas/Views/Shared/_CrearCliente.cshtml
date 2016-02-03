@@ -1,0 +1,74 @@
+﻿@model sistema_fichas.ViewModels.ClienteViewModel
+<div class="row">
+    @using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Nombre, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.Nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Nombre)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.RazonSocial, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.RazonSocial, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.RazonSocial)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Rut, new { @class = "control-label col-md-4" })
+                <div class="col-md-8  pull-left">
+                    @Html.TextBoxFor(model => model.cliente.Rut, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Rut)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Telefono, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.Telefono, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Telefono)
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Industria, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.cliente.IndustriaID, Model.ListaIndustrias, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Industria, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.UserID, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.cliente.UserID, Model.ListaUsuarios, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ListaUsuarios, null, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Giro, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.Giro, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Giro)
+                </div>
+            </div>
+            
+        </div>
+        
+        
+    </div>
+}
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

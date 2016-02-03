@@ -1,0 +1,558 @@
+﻿@model sistema_fichas.ViewModels.ClienteViewModel
+
+@{
+    ViewBag.Title = "Detalle";
+}
+<style>
+    .pointer_edit:hover
+    {
+          text-decoration:underline;
+    }
+</style>
+<link href="~/Content/bootstrap-switch/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+<script src="~/Scripts/bootstrap-switch.js"></script>
+
+<div class="row-fluid">
+    
+        <h1 class="text-center" style="margin-bottom: 0px">@Html.DisplayFor(model => model.cliente.NombreFantasia)</h1>
+        <h3 class="text-center" style="margin-top: 0px">C&oacute;d. # @Html.DisplayFor(model => model.cliente.ID)</h3>
+    <div id="cliente_detalle">
+        <div class="col-xs-12 col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.NombreFantasia)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cliente.NombreFantasia)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.RazonSocial)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cliente.RazonSocial)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.Rut)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cliente.Rut)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => Model.cliente.FechaCreacion)
+                </dt>
+                <dd>
+                    <strong>
+                        @Html.DisplayFor(model => Model.cliente.FechaCreacion)
+                    </strong>
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.Estado)
+                </dt>
+                <dd>
+                    <label class="label label-@ClienteHelper.ColorEstado(Model.cliente.Estado)">@ClienteHelper.NombreEstado(Model.cliente.Estado)</label>
+                </dd>
+                <dt>
+                    @Html.DisplayName("Direccion comercial")
+                </dt>
+                <dd>
+                   <table class="table">
+                        @if (!Model.cliente.Direcciones.Where(s => s.Tipo == 1 && s.Estado!= 0).Any()){                       
+                            <tr>
+                                <td style="padding:0px;border:0">
+                                    <span class="text-center"><label class="label label-danger">No existen registros</label></span>
+                                </td>                                
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model.cliente.Direcciones.Where(s => s.Tipo == 1 && s.Estado!= 0)){
+                                <tr  id="tr_dir_@item.ID">
+                                <td style="padding:0px;border:0;width:10px" id="td_dir_@item.ID">@DireccionHelper.DireccionCliente(item.Calle, item.Numero, item.Departamento, item.Ciudad)</td><td style="padding:0px;border:0;width:10px;"><i class="fa fa-times text-danger i_delete_direcciones" style="cursor:pointer;" onmouseover="document.getElementById('td_dir_@item.ID').style.textDecoration='underline';this.style.textDecoration='underline';" onmouseout="document.getElementById('td_dir_@item.ID').style.textDecoration='none';this.style.textDecoration='none';" data-id="@item.ID"></i></td></tr>    
+                            }
+                        }  
+                    </table>
+                </dd>
+            </dl>
+    </div>
+        <div class="col-xs-12 col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.Giro)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cliente.Giro)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.Telefono)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cliente.Telefono)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.User_ID)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cliente.Usuario.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cliente.Industria)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cliente.Industria.Nombre)
+                </dd>
+
+                
+
+                <dt>
+                    @Html.DisplayName("Direccion facturación")
+                </dt>
+                <dd>
+                        <table class="table">
+                        @if (!Model.cliente.Direcciones.Where(s => s.Tipo == 2 && s.Estado != 0).Any())
+                        {                       
+                            <tr>
+                                <td style="padding:0px;border:0">
+                                    <span class="text-center"><label class="label label-danger">No existen registros</label></span>
+                                </td>                                
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model.cliente.Direcciones.Where(s => s.Tipo == 2 && s.Estado != 0))
+                            {
+                                <tr id="tr_dir_@item.ID">
+                                <td style="padding:0px;border:0;width:10px" id="td_dir_@item.ID">@(item.Calle + " #" + item.Numero + " - depto " + item.Departamento + ", " + item.Ciudad)</td><td style="padding:0px;border:0;width:10px;"><i class="fa fa-times text-danger i_delete_direcciones" style="cursor:pointer;" onmouseover="document.getElementById('td_dir_@item.ID').style.textDecoration='underline';this.style.textDecoration='underline';" onmouseout="document.getElementById('td_dir_@item.ID').style.textDecoration='none';this.style.textDecoration='none';" data-id="@item.ID"></i></td></tr>   
+                            }
+                        }  
+                    </table>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-12">
+        <div class="form-group pull-right">
+   
+                    
+        <a href="#" data-toggle="modal" data-target="#modal_contenido" id="btn_editar_cliente" alt="Editar Cliente" data-id="@Model.cliente.ID">
+            <button type="button" class="btn btn-primary btn-sm">
+                <i class="fa fa-pencil-square-o"></i> Editar
+            </button>
+        </a>         
+        <a href="#" data-toggle="modal" data-target="#modal_contenido" id="crear_direccion" >
+            <button type="button" class="btn btn-primary btn-sm">
+                <i class="fa fa-map-marker"></i> Agregar dirección
+            </button>
+        </a>
+
+       </div> 
+    </div>
+
+
+    <div class="col-xs-12 col-md-12">
+        <div role="tabpanel">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <ul class="nav nav-tabs" role="tablist" style="margin-top:50px">
+                        <li role="presentation" class="active"><a id="pedidos_tab" href="#prodServ" aria-controls="prodServ" role="tab" data-toggle="tab">Pedidos</a></li>
+                        <li role="presentation"><a id="contactos_tab" href="#contactos" aria-controls="contactos" role="tab" data-toggle="tab">Contactos</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="prodServ">
+                            <div class="col-xs-12 col-md-12" style="margin-bottom:30px">
+                                <div class="text-center"><h3>Tabla de Pedidos</h3></div>
+                                <table class="table table-bordered table-condensed table-striped table-hover table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th class="text-center col-md-1"><i class="fa fa-tag"></i> COD.</th>
+                                            <th class="text-center col-md-2"><i class="fa fa-calendar"></i> Fecha</th>
+                                            <th class="text-center col-md-2"><i class="fa fa-user"></i> Ejecutivo</th>
+                                            <th class="text-center col-md-4"><i class="fa fa-th"></i> Resumen</th>
+                                            <th class="text-center col-md-2"><i class="fa fa-star"></i> Estado</th>
+                                            <th class="text-center col-md-1"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (!Model.Pedidos.Any())
+                                        {
+                                            <tr><td colspan="7" class="text-danger text-center">No existen registros</td></tr>
+                                        }
+                                        else
+                                        {
+                                            var i=1;
+                                            foreach (var item in Model.Pedidos.Where(x => x.EstadoPedido.Estado != 0).OrderBy(x => x.FechaInicio))
+                                            {
+                                                <tr data-row-id="@item.ID">
+                                                    <td class="text-center">@(i++)</td>
+                                                    <td class="text-center">@Html.DisplayFor(modelItem => item.ID)</td>
+                                                    <td class="text-center">@Html.DisplayFor(modelItem => item.FechaInicio)</td>
+                                                    <td class="text-center">@Html.DisplayFor(modelItem => item.UserProfile.UserName)</td>
+                                                    <td class="">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label class="label label-success">@item.PedidosDetalle.Where(x => x.Tipo == 1 && x.EstadoDetalle.Estado == 1).Count()</label> Servicios<br />
+                                                                <label class="label label-info">@item.PedidosDetalle.Where(x => x.Tipo == 2 && x.EstadoDetalle.Estado == 1).Count()</label> Productos
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label class="label label-primary">@item.PedidosDetalle.Where(x => x.Tipo == 4 && x.EstadoDetalle.Estado == 1).Count()</label> Actividades<br />
+                                                                <label class="label label-warning">@item.PedidosDetalle.Where(x => x.Tipo == 3 && x.EstadoDetalle.Estado == 1).Count()</label> Herramientas
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </td>
+                                                    <td class="text-center"><label class="label label-default">@Html.DisplayFor(modelItem => item.EstadoPedido.Nombre)</label></td>
+                                                    <td class="text-center">
+                                                        <button class=" btn btn-primary btn-sm editar_pedido text-center" type="button" alt="Ver Pedido" data-id="@Html.DisplayFor(modelItem => item.ID)" data-url="@Url.Action("Details", "Pedido", new { @id = item.ID})">
+                                                            <i class="fa fa-chevron-circle-right"></i>
+                                                        </button>
+                                                </td>
+                                                </tr>
+
+                                            }
+                                        }
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <a href="#" data-toggle="modal" data-target="#modal_contenido" id="btn_crear_pedido" alt="Crear Pedido" data-id="" class="pull-right">
+                                    <button type="button" class="btn btn-primary btn-sm" id="boton_crear" class="form-control btn btn-default" data-id="@Model.cliente.ID" data-url="@Url.Action("Create", "Pedido")">
+                                        <i class="fa fa-shopping-cart"></i> Agregar pedido
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="contactos">
+                            <div class="row-fluid">
+                                <div class="col-xs-12 col-md-12" style=" margin-bottom:30px">
+                                    <div class="text-center"><h3>Tabla de Contactos</h3></div>
+                                    <table class="table table-bordered table-condensed table-striped table-hover table-responsive">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-3">Nombres</th>
+                                                <th class="col-md-2">Email</th>
+                                                <th class="">Cargo</th>
+                                                <th class="">Celular</th>
+                                                <th class="">Teléfono</th>
+                                                <th class="">Tipo</th>
+                                                <th class="col-md-1"></th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            @if (!Model.Contactos.Any())
+                                            {
+                                                <tr>
+                                                    <td colspan="6" class="text-danger text-center">No existen registros</td>
+                                                </tr>
+                                            }
+                                            else
+                                            {
+                                                foreach (var item in Model.Contactos.OrderBy(s => s.Tipo))
+                                                {
+                                                    <tr data-row-id="@item.ID">
+                                                        <td>@item.Nombres</td>
+                                                        <td>@item.Email</td>
+                                                        <td>@item.Cargo</td>
+                                                        <td>@item.Celular</td>
+                                                        <td>@item.Telefono</td>
+                                                        
+                                                        <td><label class="label label-success">@ContactoHelper.getTipoName(item.Tipo.Value)</label></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary btn-sm editar_contacto" alt="Editar" data-id="@item.ID" data-toggle="modal" data-target="#modal_contenido">
+                                                                <i class="fa fa-pencil"></i>
+                                                            </button>
+
+                                                            <button type="button" class="btn btn-primary btn-sm eliminar_contacto" alt="Eliminar" data-id="@item.ID">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <a href="#" data-toggle="modal" data-target="#modal_contenido" id="crear_contacto" class="pull-right">
+                                    <button type="button" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-tty"></i> Agregar contacto
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        function eliminarContacto(ContactoID) {
+            if (confirm("Está seguro de borrar el contacto?")) {
+                $.ajax({
+                    url: '@(Url.Action("Anular", "Contacto"))',
+                    data: { ContactoID: ContactoID },
+                    type: "POST",
+                }).done(function (data) {
+                    if (data.status == true) {
+                        $('tr[data-row-id=' + ContactoID + ']').remove();
+                    }
+                    alert(data.msg);
+
+                });
+            }
+        }
+
+        function editarContacto(contactoID) {
+            event.preventDefault();
+            resetModal("Editar Contacto");
+            $.ajax({
+                url: '@(Url.Action("Edit", "Contacto"))',
+                data: { contactoID: contactoID },
+                type: "GET",
+
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () {
+                    $("#modal_body form").submit();
+                });
+
+                $("#modal_body form").submit(function () {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: '@(Url.Action("Edit", "Contacto"))',
+                        data: $(this).serialize(),
+                        dataType: 'json'
+                    })
+                    .done(function (data) {
+                        $('#modal_alert').removeClass().addClass('alert');
+                        if (data.status == true) {
+                            $("#modal_alert").html(data.msg).addClass('alert-success');
+                            $('#boton_guardar').addClass('hidden');
+                            setInterval(function () {
+                                window.location.href = data.url;
+                            }, 1000);
+
+                        } else
+                            $("#modal_alert").html(data.msg).addClass('alert-danger');
+                    });
+
+                    return false;
+                });
+
+            });
+
+
+        }
+
+        function crearContacto() {
+            event.preventDefault();
+            resetModal("Crear Contacto");
+            $.ajax({
+                url: '@(Url.Action("CrearContacto", "Contacto"))',
+                data: { Cliente_ID: "@(Model.cliente.ID)" }
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () {
+                    $("#modal_body form").submit();
+                });
+                $("#modal_body form").submit(function () {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: '@(Url.Action("CrearContacto", "Contacto"))',
+                        data: $(this).serialize(),
+                        dataType: 'json'
+                    })
+                    .done(function (data) {
+                        $('#modal_alert').removeClass().addClass('alert');
+                        if (data.status == true) {
+                            $("#modal_alert").html(data.msg).addClass('alert-success');
+                            $('#boton_guardar').addClass('hidden');
+                            setInterval(function () {
+                                window.location.href = data.url;
+                            }, 1000);
+
+                        } else
+                            $("#modal_alert").html(data.msg).addClass('alert-danger');
+                    });
+
+                    return false;
+                });
+            });
+        }
+
+        function crearDireccion() {
+            event.preventDefault();
+            resetModal("Crear Dirección");
+            $.ajax({
+                url: '@(Url.Action("Create", "Direccion"))',
+                data: { ClienteID: "@(Model.cliente.ID)" }
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () {
+                    $("#modal_body form").submit();
+                });
+                $("#modal_body form").submit(function () {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: '@(Url.Action("CrearDireccion", "Direccion"))',
+                        data: $(this).serialize(),
+                    })
+                    .done(function (data) {
+                        $('#modal_alert').removeClass().addClass('alert');
+                        if (data.status == true) {
+                            $("#modal_alert").html(data.msg).addClass('alert-success');
+                            $('#boton_guardar').addClass('hidden');
+                            setInterval(function () {
+                                window.location.href = data.url;
+                            }, 1000);
+
+                        } else
+                            $("#modal_alert").html(data.msg).addClass('alert-danger');
+                    });
+
+                    return false;
+                });
+            });
+        }
+
+        function editarCliente(clienteID) {
+            event.preventDefault();
+            resetModal("Editar Cliente");
+
+            $.ajax({
+                url: '@(Url.Action("EditModal", "Cliente"))',
+                data: { clienteID: clienteID },
+                type: "GET",
+
+            }).done(function (data) {
+
+
+                $("#modal_body").html(data);
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () {
+                    $("#modal_body form").submit();
+                });
+
+
+                $("#modal_body form").submit(function () {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: '@(Url.Action("EditModal", "Cliente"))',
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        dataType: 'json'
+                    })
+                .done(function (data) {
+                    $('#modal_alert').removeClass().addClass('alert');
+                    if (data.status == true) {
+                        $("#modal_alert").html(data.msg).addClass('alert-success');
+                        $('#boton_guardar').addClass('hidden');
+                        $("#boton_cerrar").click(function () {
+                            window.location.href = data.url;
+                        })
+
+                    } else
+                        $("#modal_alert").html(data.msg).addClass('alert-danger');
+                });
+
+                    return false;
+                });
+
+            });
+
+
+        }
+
+        function eliminarDirecciones(DireccionID) {
+            if (confirm("Está seguro de borrar la dirección: " + $('#td_dir_' + DireccionID).html() + " ?")) {
+                $.ajax({
+                    url: '@(Url.Action("Delete", "Direccion"))',
+                    data: { DireccionID: DireccionID },
+                    type: "POST",
+                }).done(function (data) {
+                    if (data.status == true) {
+                        $('#tr_dir_' + DireccionID).remove();
+                    }
+                    else {
+                        alert(data.status);
+                    }
+                });
+            }
+        }
+
+        function MostrarContrato(str) {
+            window.open(str);
+            //   window.location.href = str;
+
+
+        }
+        $(document).ready(function () {
+            $(".editar_pedido").click(function () { window.location.href = $(this).attr('data-url'); });
+            $("#crear_direccion").click(function () { event.preventDefault(); crearDireccion(); });
+            $("#crear_contacto").click(function () { event.preventDefault(); crearContacto(); });
+            $(".editar_contacto").click(function () { event.preventDefault(); editarContacto($(this).attr('data-id')); });
+            $(".eliminar_contacto").click(function () { event.preventDefault(); eliminarContacto($(this).attr('data-id')); });
+            $("#pedidos_tab").click(function () { event.preventDefault(); });
+            $("#btn_editar_cliente").click(function () { event.preventDefault(); editarCliente($(this).attr('data-id')); });
+            $(".i_delete_direcciones").click(function () { event.preventDefault(); eliminarDirecciones($(this).attr('data-id')); });
+            $("#span_contrato").click(function () { event.preventDefault(); MostrarContrato($("#span_contrato").html()); });
+
+            function CrearPedido(URL, ClienteID, TEXTO){
+
+                resetModal(TEXTO);
+                $.ajax({
+                    url: URL,
+                    data: { ClienteID: ClienteID },
+                    type: 'GET',
+                }).done(function (data) {
+                    $("#modal_body").html(data);
+                    $("#modal_contenido").modal('show');
+                    $("#modal_body form").submit(function () {
+                        $.ajax({
+                            url: URL,
+                            data: $(this).serialize(),
+                            type: 'POST',
+                        }).done(function (data) {
+                            if (data.status == true) {
+                                lockModalInputs()
+                                msg_modal_alert(data.msg, 'success');
+                                $("#modal_body").html(data.contenido);
+                                $("#boton_guardar").text("Ver Pedido").click(function () { location.href = data.url; });
+                            }
+                            else
+                            {
+                                msg_modal_alert(data.msg, 'danger');
+                            }
+
+                        });
+                        return false;
+                    });
+                    $("#boton_guardar").off('click');
+                    $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+                });
+            }
+            $("#boton_crear").click(function () {
+                CrearPedido($(this).attr('data-url'),$(this).attr('data-id'), "Crear Pedido");
+            });
+        });
+
+    </script>
+}

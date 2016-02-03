@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E07E61D4-8C82-4915-BD11-3F2EAE989BEF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sistema_fichas.Service</RootNamespace>
+    <AssemblyName>sistema-fichas.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdjuntoService.cs" />
+    <Compile Include="CatalogoService.cs" />
+    <Compile Include="ClienteService.cs" />
+    <Compile Include="ContactoService.cs" />
+    <Compile Include="DireccionService.cs" />
+    <Compile Include="EstadoDetalleService.cs" />
+    <Compile Include="EstadoPedidoService.cs" />
+    <Compile Include="HerramientaService.cs" />
+    <Compile Include="IndustriaService.cs" />
+    <Compile Include="ModalidadService.cs" />
+    <Compile Include="MonedaService.cs" />
+    <Compile Include="PatenteService.cs" />
+    <Compile Include="PedidoDetalleService.cs" />
+    <Compile Include="PedidoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoClienteService.cs" />
+    <Compile Include="UsuarioService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sistema-fichas.Business.Core\sistema-fichas.Business.Core.csproj">
+      <Project>{7dc65124-eccf-453c-8c7a-22e7529251eb}</Project>
+      <Name>sistema-fichas.Business.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sistema-fichas.Business\sistema-fichas.Business.csproj">
+      <Project>{24bfd038-9194-47ad-ae6b-82582b5e267e}</Project>
+      <Name>sistema-fichas.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sistema-fichas.Repository.Core\sistema-fichas.Repository.Core.csproj">
+      <Project>{af8e5579-7f42-4612-9a92-df8e0fa401f1}</Project>
+      <Name>sistema-fichas.Repository.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sistema-fichas.Repository\sistema-fichas.Repository.csproj">
+      <Project>{6424cba0-002f-4016-8dd4-e676f8a437a4}</Project>
+      <Name>sistema-fichas.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\sistema-fichas.Service.Core\sistema-fichas.Service.Core.csproj">
+      <Project>{f8a169de-39c1-47d0-b3e0-6313f6d69e8f}</Project>
+      <Name>sistema-fichas.Service.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

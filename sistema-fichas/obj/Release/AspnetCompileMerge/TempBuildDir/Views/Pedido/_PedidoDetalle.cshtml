@@ -1,0 +1,33 @@
+﻿@model sistema_fichas.Business.Pedido
+
+<div class="row">
+    <div class="col-xs-6 col-md-6">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.Cliente)</dt>
+            <dd><a href="@Url.Action("Details", "Cliente", new { @id = Model.Cliente_ID })">@Html.DisplayFor(model => model.Cliente.NombreFantasia)</a></dd>
+
+            <dt>@Html.DisplayNameFor(model => model.UserProfile)</dt>
+            <dd>@Html.DisplayFor(model => model.UserProfile.UserName)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.EstadoPedido)</dt>
+            <dd>
+                <label class="label label-default">
+                    @Html.DisplayFor(model => model.EstadoPedido.Nombre)
+                </label>
+            </dd>
+        </dl>
+    </div>
+    <div class="col-xs-6 col-md-6">
+        <dl class="dl-horizontal text-left">
+            <dt>@Html.DisplayNameFor(model => model.FechaInicio)</dt>
+            <dd>@Html.DisplayFor(model => model.FechaInicio)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.FechaTermino)</dt>
+            <dd>@Html.DisplayFor(model => model.FechaTermino)</dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Facturado)</dt>
+            <dd>@Html.LabelFor(model => model.Facturado, Model.Facturado ? "Si":"No",new { @class="label label-default"})</dd>
+        </dl>
+    </div>
+    
+</div>

@@ -1,0 +1,131 @@
+﻿@model sistema_fichas.ViewModels.PedidoViewModel
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="~/Scripts/select2.js"></script>
+<link href="~/Content/select2.css" rel="stylesheet" />
+<link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
+
+<div class="row-fluid">
+@using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.PedidoDetalle.Pedido_ID)
+    @Html.HiddenFor(model => model.PedidoDetalle.ID)
+    @Html.HiddenFor(model => model.PedidoDetalle.EstadoDetalle_ID)
+    @Html.HiddenFor(model => model.TipoDetalle)
+    @Html.HiddenFor(model => model.PedidoDetalle.Tipo)
+
+    <div class="form-group">
+        @Html.Label("Servicio", new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            <select name="@Html.NameFor(model => model.PedidoDetalle.Catalogo_ID)" id="@Html.IdFor(model => model.PedidoDetalle.Catalogo_ID)" class="form-control">
+                @foreach (var item in Model.Productos)
+                {
+                    <option value="@(item.ID)" @((item.ID == Model.PedidoDetalle.Catalogo_ID) ? "selected" : "") data-valorbaseUF="@item.ValorBaseUF" data-valorbaseCLP="@item.ValorBaseCLP">@item.Nombre</option>
+                }
+            </select>
+
+
+            @Html.ValidationMessageFor(model => model.Productos, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.Cantidad, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PedidoDetalle.Cantidad, new { @class = "form-control", @placeholder = "Ingrese Cantidad" })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.Cantidad, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.Valor, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    @Html.DropDownListFor(model => model.PedidoDetalle.Moneda_ID, Model.ListaMonedas, new { @class = "" })
+                </span>
+                @Html.TextBoxFor(model => model.PedidoDetalle.Valor, new { @class = "form-control col-sm-1", @placeholder = "Ingrese Valor" })
+            </div>
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.Valor, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.FechaInicio, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PedidoDetalle.FechaInicio, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.FechaInicio, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div id="div_fecha_termino" class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.FechaTermino, "Fecha fin ciclo", new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PedidoDetalle.FechaTermino, new { @class = "form-control datepicker" })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.FechaTermino, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PedidoDetalle.EstadoDetalle, new { @class = "control-label col-md-2" })
+        <div class="col-md-8">
+            @Html.TextBoxFor(model => model.PedidoDetalle.EstadoDetalle.Nombre, new { @class = "form-control", @disabled = true })
+            @Html.ValidationMessageFor(model => model.PedidoDetalle.EstadoDetalle, null, new { @class = "text-danger" })
+        </div>
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.PedidoDetalle.Comentario, new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.PedidoDetalle.Comentario, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PedidoDetalle.Comentario, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        }
+    </div>
+
+<script>
+
+    function sugerirValor(elem) {
+        var selec_val = $("#@Html.IdFor(model => model.PedidoDetalle.Valor)");
+        var moneda = $("#@Html.IdFor(model => model.PedidoDetalle.Moneda_ID)").find(':selected').text();
+        var valorBase_moneda = 'data-valorbase' + moneda;
+        var val_sugerido = $(elem).find(':selected').attr(valorBase_moneda);
+        console.log(valorBase_moneda);
+        selec_val.val(val_sugerido);
+
+        if (selec_val.val() < val_sugerido) {
+            //marcar error
+        }
+
+    }
+
+    function LimpiarCampos() {
+        var valInput = $('#@Html.IdFor(model => model.PedidoDetalle.Valor)');
+        $(valInput).val($(valInput).val().replace('.', ','))
+
+
+    }
+
+    $(function () {
+
+        dateInicio = $('#@Html.IdFor(model => model.PedidoDetalle.FechaInicio)');
+        dateTermino = $('#@Html.IdFor(model => model.PedidoDetalle.FechaTermino)');
+
+        dateTermino.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+        dateInicio.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+
+        dateInicio.on("dp.change", function (e) {
+            dateTermino.data("DateTimePicker").minDate(e.date);
+        });
+        dateTermino.on("dp.change", function (e) {
+            dateInicio.data("DateTimePicker").maxDate(e.date);
+        });
+
+        $("#@(Html.IdFor(model => model.PedidoDetalle.Valor))").change(function (e) { e.preventDefault(); LimpiarCampos() });
+        $("#@Html.IdFor(model => model.PedidoDetalle.Catalogo_ID)").change(function () { sugerirValor(this) });
+
+        $('#@Html.IdFor(model => model.PedidoDetalle.Catalogo_ID)').select2();
+    });
+</script>

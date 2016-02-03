@@ -1,0 +1,628 @@
+﻿@model sistema_fichas.ViewModels.PedidoViewModel
+
+@{ ViewBag.Title = "Pedido"; }
+
+<div id="div_pedidos" >
+    @(Html.Partial("~/Views/Pedido/_PedidoDetalle.cshtml", Model.Pedido))
+</div>
+
+<div id="div_btn_estado_editar_pedido">
+     @(Html.Partial("~/Views/Pedido/_BotonesPedidoDetalle.cshtml", Model.Pedido))
+</div>
+  
+<div id="div_detalle"  class="col-xs-12 col-md-12">
+    
+    <h3>Servicios</h3>
+    <div id="div_servicios">
+        @(Html.Partial("~/Views/Pedido/_ServiciosList.cshtml", Model.ServiciosActivos))
+        
+    </div>
+    @if(PedidoHelper.esEditable(Model.Pedido.EstadoPedido.Estado))
+    {
+    <div class="col-xs-12 col-md-12 col-lg-12 btn-agregar">
+        <div class="pull-right">
+            <div class="form-group">
+                <button class="btn btn-primary btn-sm  form-control" id="agregar_detalle" data-toggle="modal" data-target="#modal_contenido" data-url="@(Url.Action("AgregarServicio", "Pedido"))" data-id="@Model.Pedido.ID" data-type="servicio">
+                    <span class="fa fa-gears"></span> Agregar Servicio
+                </button>
+            </div>
+        </div>       
+    </div>
+    }
+</div>
+
+<div id="div_patente" class="col-xs-12 col-md-12 col-lg-12">
+    <h3>Patentes</h3>
+    <div id="div_patentes">
+        @(Html.Partial("~/Views/Pedido/_PatentesList.cshtml", Model.PatentesActivas))
+    </div>
+    @if (PedidoHelper.esEditable(Model.Pedido.EstadoPedido.Estado))
+    {
+        <div class="col-xs-12 col-md-12 col-lg-12 btn-agregar">
+            <div class="form-group pull-right">
+                <button class="btn btn-primary btn-sm form-control" id="agregar_patente" data-toggle="modal" data-target="#modal_contenido" data-url="" data-id="@Model.Pedido.ID" data-type="patente">
+                    <span class="fa fa-automobile"></span> Agregar Patente
+                </button>
+            </div>
+        </div>
+    }
+</div>
+
+<div id="div_producto" class="col-xs-12 col-md-12">
+    <h3>Productos</h3>
+    <div id="div_productos">
+        @(Html.Partial("~/Views/Pedido/_ProductosList.cshtml", Model.ProductosActivos))
+    </div>
+    @if (PedidoHelper.esEditable(Model.Pedido.EstadoPedido.Estado))
+    {
+    <div class="col-xs-12 col-md-12 col-lg-12 btn-agregar">
+            <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal_contenido" id="agregar_producto" data-id="@Model.Pedido.ID" data-type="producto">
+                <i class="fa fa-shopping-cart"></i> Agregar Producto
+            </button>
+    </div>
+    }
+</div>
+
+
+<div id="div_actividad" class="col-xs-12 col-md-12">
+    <h3>Actividades</h3>
+    <div id="div_actividades">
+        @(Html.Partial("~/Views/Pedido/_ActividadesList.cshtml", Model.ActividadesActivas))
+    </div>
+    
+    @if (PedidoHelper.esEditable(Model.Pedido.EstadoPedido.Estado))
+    {
+        <div class="col-xs-12 col-md-12 col-lg-12 btn-agregar">
+            <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal_contenido" id="agregar_actividad" data-id="@Model.Pedido.ID" data-type="actividad">
+                <i class="fa fa-tags"></i> Agregar Actividad
+            </button>
+        </div>
+    }
+    
+</div>
+
+
+<div id="div_herramienta" class="col-xs-12 col-md-12">
+    <h3>Herramientas</h3>
+    <div id="div_herramientas">
+        @(Html.Partial("~/Views/Pedido/_HerramientaList.cshtml", Model.HerramientasActivas))
+    </div>
+    @if (PedidoHelper.esEditable(Model.Pedido.EstadoPedido.Estado))
+    {
+        <div class="col-xs-12 col-md-12 col-lg-12 btn-agregar">
+                <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal_contenido" id="agregar_herramienta" data-id="@Model.Pedido.ID" data-type="herramienta">
+                    <i class="fa fa-wrench"></i> Agregar herramienta
+                </button>
+        </div>
+    }
+</div>
+
+<div id="div_adjunto" class="col-xs-12 col-md-12">
+    <h3>Adjuntos</h3>
+    <div id="div_adjuntos">
+        @(Html.Partial("~/Views/Pedido/_AdjuntoList.cshtml", Model.AdjuntosActivos))
+    </div>
+    @if (PedidoHelper.esEditable(Model.Pedido.EstadoPedido.Estado))
+    {
+    <div class="col-xs-12 col-md-12 col-lg-12 btn-agregar">
+            <button data-toggle="modal" data-target="#modal_contenido" id="agregar_adjunto" class="btn btn-primary btn-sm pull-right" data-id="@Model.Pedido.ID" data-type="adjunto" type="button">
+                <i class="fa fa-file-o"></i> Agregar Adjunto
+            </button>
+    </div>
+    }
+</div>
+
+@section Scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#agregar_actividad").click(function () {
+            agregar_actividad($(this).attr('data-id'));
+        });
+
+        function agregar_actividad(PedidoID) {
+            resetModal("Agregar Actividad");
+            $.ajax({
+                url: '@Url.Action("AgregarActividad","Pedido")',
+                data: { PedidoID: PedidoID },
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#modal_body form").submit(function () {
+                    $('#PedidoDetalle_Valor').val($('#PedidoDetalle_Valor').val().replace('.', ','))
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    $.ajax({
+                        url: '@Url.Action("AgregarActividad", "Pedido")',
+                        data: $(this).serialize(),
+                        type: 'POST'
+                    }).done(function (data) {
+                        if (data.status) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');
+                            $("#div_actividades").html(data.contenido);
+                            $("#boton_guardar").hide();
+                            $(document).off("click", ".borrar_detalle");
+                            $(document).on("click", ".borrar_detalle", function () { eliminar_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+                    });
+                    return false;
+                });
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+
+            });
+        }
+
+
+        $("#agregar_producto").click(function () {
+            agregar_producto($(this).attr('data-id'));
+        });
+
+        function agregar_producto(PedidoID) {
+            resetModal("Agregar Producto");
+            $.ajax({
+                url: '@Url.Action("AgregarProducto","Pedido")',
+                data: { PedidoID: PedidoID },
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#modal_body form").submit(function () {
+                    $('#PedidoDetalle_Valor').val($('#PedidoDetalle_Valor').val().replace('.', ','))
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    $.ajax({
+                        url: '@Url.Action("AgregarProducto","Pedido")',
+                        data: $(this).serialize(),
+                        type: 'POST'
+                    }).done(function (data) {
+                        if (data.status) {
+                            lockModalInputs();
+                            msg_modal_alert(data.msg, 'success');
+                            $("#div_productos").html(data.contenido);
+                            $("#boton_guardar").hide();
+                            $(document).off("click", ".borrar_detalle");
+                            $(document).on("click", ".borrar_detalle", function () { eliminar_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+                    });
+                    return false;
+                });
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+
+            });
+        }
+
+
+
+        /**
+        Funcion para editar los detalles generales de un pedido
+        Hace un request del formulario hacia el modal genérico
+        se bindea el Submit del formulario para hacer un post con ajax
+        y finalmente se recarga la página.
+        */
+
+        $(document).on("click", "#editar_pedido", function () { editar_pedido($(this).attr('data-id')) });
+        function editar_pedido(PedidoID) {
+
+            resetModal("Editar Detalle");
+            $.ajax({
+                url: '@Url.Action("Edit","Pedido")',
+                data: { PedidoID: PedidoID },
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#modal_body form").submit(function () {
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    $.ajax({
+                        url: '@Url.Action("Edit","Pedido")',
+                        data: $(this).serialize(),
+                        type: 'POST',
+                    }).done(function (data) {
+                        if (data.status) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');
+                            $("#div_pedidos").html(data.contenido);
+                            $("#boton_guardar").hide();
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+                    });
+                    return false;
+                });
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+            });
+
+        }
+
+        // Funcion para enviar a revisión
+        $(document).on("click", ".cambiar_estado", function () { cambiar_estado($(this).attr('data-id'), $(this).attr('data-action'), $(this).attr('data-text')) });
+        function cambiar_estado(PedidoID, ActionID, ActionName) {
+
+            if (confirm("¿Está seguro de " + ActionName + " este pedido?")) {
+                $.ajax({
+                    url: '@(Url.Action("CambiarEstado","Pedido"))',
+                    data: { PedidoID: PedidoID, Estado: ActionID },
+                    type: 'POST',
+                }).done(function (data) {
+                    if (data.status == true) {
+                        $('#div_pedidos').html(data.contenido);
+                        $('#div_btn_estado_editar_pedido').html(data.contenidoBotones);
+                        console.log(data.estado);
+
+                        if(data.estado == @(sistema_fichas.Business.TipoEstadoPedido.Revision.GetHashCode())){
+                            $('.btn-agregar').remove();
+                        }
+                            
+                    }
+                    alert(data.msg);
+                });
+            }
+        }
+
+
+
+        $(document).on("click", "#estado_pedido", function () { estado_pedido($(this).attr('data-id'), $(this).attr('data-url')) });
+        function estado_pedido(PedidoID, URL) {
+
+            resetModal("Cambiar Estado Detalle");
+            if (confirm("¿Está seguro de cambiar el estado a este pedido?")) {
+                $.ajax({
+                    url: URL,
+                    data: { PedidoID: PedidoID },
+                    type: 'POST',
+                }).done(function (data) {
+                    if (data.status == true) {
+                        $('#div_pedidos').html(data.contenido);
+                        $('#div_btn_estado_editar_pedido').html(data.contenidoBotones);
+                    } else {
+                        $("#modal_alert").html(data.msg).addClass('alert-danger');
+                    }
+                });
+            }
+        }
+
+        $(".borrar_adjunto").click(function () { eliminar_adjunto($(this).attr('data-id'), $(this).attr('data-type')); });
+        function eliminar_adjunto(AdjuntoID, Tipo) {
+
+            if (confirm("Está seguro que desea eliminar el adjunto #" + AdjuntoID)) {
+                $.ajax({
+                    url: '@(Url.Action("EliminarAdjunto","Pedido"))',
+                    data: { AdjuntoID: AdjuntoID },
+                    type: 'POST'
+                }).done(function (data) {
+                    alert(data.msg);
+                    event.preventDefault();
+                    if (data.status == true) {
+                        $("#adjunto-" + AdjuntoID).remove();
+                    }
+
+                });
+            }
+            return false;
+        }
+
+        /*
+        Funcion para agregar herramientas al pedido
+        */
+
+        $('#agregar_herramienta').click(function () { agregar_herramienta($(this).attr('data-id')) });
+        function agregar_herramienta(PedidoID) {
+            resetModal("Agregar Herramienta");
+            $.ajax({
+                url: '@(Url.Action("AgregarHerramienta", "Pedido"))',
+                data: { PedidoID: PedidoID },
+                type: 'GET'
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $('#modal_contenido').css('width', 'auto');
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () {
+                    $("#modal_body form").submit();
+                });
+                $("#modal_body form").submit(function () {
+                    $('#PedidoDetalle_Valor').val($('#PedidoDetalle_Valor').val().replace('.', ','))
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: '@(Url.Action("AgregarHerramienta", "Pedido"))',
+                        data: $(this).serialize(),
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if (data.status == true) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');
+                            $('#boton_guardar').addClass('hidden');
+                            $('#div_herramientas').html(data.contenido);
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled')
+                    });
+                    return false;
+                });
+            });
+        }
+        $(document).on("click", "#agregar_patente", function (event) { event.preventDefault(); agregar_patente($(this).attr('data-id')) });
+        function agregar_patente(PedidoID)
+        {
+            event.preventDefault();
+            resetModal("Agregar Patente");
+            $.ajax({
+                url: '@(Url.Action("AgregarPatente", "Pedido"))',
+                data: {PedidoID: PedidoID},
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+                $("#modal_body form").submit(function ()
+                {
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    event.preventDefault();
+                    $.ajax({
+                        url: '@(Url.Action("AgregarPatente", "Pedido"))',
+                        type: "POST",
+                        data: $(this).serialize(),
+                        dataType: 'json'
+                    }).done(function (data)
+                    {
+                        if (data.status == true) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');;
+                            $('#boton_guardar').addClass('hidden');
+                            $('#div_patentes').html(data.contenido);
+
+                            $(document).off("click", ".borrar_detalle");
+                            $(document).on("click", ".borrar_detalle", function () { eliminar_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+                    });
+                    return false;
+                });
+
+            });
+        }
+
+        $("#agregar_adjunto").click(function () { crear_adjunto($(this).attr('data-id')) });
+        function crear_adjunto(PedidoID) {
+            resetModal("Agregar archivo adjunto");
+            $.ajax({
+                url: '@(Url.Action("AgregarAdjunto", "Pedido"))',
+                data: { PedidoID: PedidoID },
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+                $("#modal_body form").submit(function () {
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: '@(Url.Action("AgregarAdjunto", "Pedido"))',
+                        data: new FormData(this),
+                        processData: false,
+                        contentType: false,
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if (data.status == true) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');;
+                            $('#boton_guardar').addClass('hidden');
+                            $('#div_adjuntos').html(data.contenido);
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+
+                    });
+                    return false;
+                });
+            });
+        }
+
+        $("#agregar_detalle").click(function () { agregar_detalle($(this).attr('data-url'), $(this).attr('data-id')); });
+        function agregar_detalle(URL, PedidoID) {
+            resetModal("Agregar Servicio");
+            $.ajax({
+                url: URL,
+                data: { PedidoID: PedidoID },
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#boton_guardar").off('click').click(function () {
+                    $("#modal_body form").submit();
+                });
+                $("#modal_body form").submit(function () {
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: URL,
+                        data: $(this).serialize(),
+                        dataType: 'json'
+                    }).done(function (data) {
+                        if (data.status == true) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');
+                            $("#boton_guardar").addClass('hidden');
+                            $("#div_servicios").html(data.contenido);
+                            $(document).off("click", ".borrar_detalle");
+                            $(document).on("click", ".borrar_detalle", function () { eliminar_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+
+                    });
+                    return false;
+                });
+            });
+        }
+
+        $(".borrar_herramienta").click(function () { eliminar_herramienta($(this).attr('data-id')) });
+        function eliminar_herramienta(HerramientaID) {
+            if (confirm("¿Está seguro que desea eliminar la herramienta?")) {
+                $.ajax({
+                    url: '@Url.Action("EliminarHerramienta", "Pedido")',
+                    data: { PedidoDetalleID: HerramientaID },
+                    type: 'POST'
+                }).done(function (data) {
+                    alert(data.msg);
+                    event.preventDefault();
+                    if (data.status == true) {
+                        $('#herramienta-' + HerramientaID).remove();
+                    }
+                })
+            }
+        }
+
+        $('.ver_detalle').click(function () { ver_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+        function ver_detalle(id, tipo)
+        {
+            var tituloModal = "Ver detalle ";
+            tituloModal = tituloModal + getNombreTipo(tipo);
+            resetModal(tituloModal);
+            $("#boton_guardar").off('click');
+            $("#boton_guardar").addClass('hidden');
+
+            $("#modal_contenido").modal("show")
+            $.ajax({
+                url: '@Url.Action("VerPedidoDetalle", "Pedido")',
+                data: { PedidoDetalleID: id, TipoPedidoDetalle: tipo},
+                type: 'POST'
+            }).done(function (data)
+            {
+                $("#modal_body").html(data);
+            });
+
+        }
+
+
+        $(".borrar_detalle").click(function () { eliminar_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+        function eliminar_detalle(PedidoDetalleID, Tipo) {
+
+            var fila_id = '#' + getNombreTipo(Tipo).toLowerCase() + 's-' + PedidoDetalleID;
+
+            console.log(fila_id);
+            if (confirm("Está seguro que desea eliminar #" + getNombreTipo(Tipo))) {
+                $.ajax({
+                    url: '@(Url.Action("EliminarDetallePedido", "Pedido"))',
+                    data: { PedidoDetalleID: PedidoDetalleID, TipoDetalle: Tipo },
+                    type: 'POST'
+                }).done(function (data){
+                    alert(data.msg);
+                    event.preventDefault();
+                    if (data.status == true) {
+                        $(fila_id).remove();
+                    }
+                });
+            }
+            return false;
+        }
+
+    $(".cambiar_estado_servicio").click(function () { cambiar_estado_servicio($(this).attr('data-id'), $(this).attr('data-status'), $(this).attr('data-type')) });
+    function cambiar_estado_servicio(PedidoDetalleID, TipoEstadoDetalle, Tipo) {
+
+            var fila_id = getNombreTipo(Tipo).toLowerCase() + 's';
+
+            console.log(fila_id);
+            if (confirm("Está seguro que desea cambiar el estado de este " + getNombreTipo(Tipo))) {
+                $.ajax({
+                    url: '@(Url.Action("CambiarEstadoServicio", "Pedido"))',
+                    data: { PedidoDetalleID: PedidoDetalleID, TipoEstadoServicio: Tipo },
+                    type: 'POST'
+                }).done(function (data){
+                    
+                    event.preventDefault();
+                    if (data.status == true) {
+                        $("#div_" + fila_id.toLowerCase()).html(data.contenido);
+                        console.log(data.contenido);
+                        console.log(fila_id.toLowerCase());
+                    }
+                    alert(data.msg);
+                });
+            }
+            return false;
+        }
+
+        $(document).on("click", ".editar_detalle", function () { editar_pedidoDetalle($(this).attr('data-id'), $(this).attr('data-type')) });
+        function editar_pedidoDetalle(DetalleID, TipoDetalle) {
+            var tituloModal = "Editar ";
+            tituloModal = tituloModal + getNombreTipo(TipoDetalle);
+            resetModal(tituloModal);
+            $.ajax({
+                url: '@Url.Action("EditPedidoDetalle","Pedido")',
+                data: { Detalle_ID: DetalleID, TipoDetalle: TipoDetalle },
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#modal_body form").submit(function () {
+                    $('#PedidoDetalle_Valor').val($('#PedidoDetalle_Valor').val().replace('.', ','))
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    $.ajax({
+                        url: '@Url.Action("EditPedidoDetalle","Pedido")',
+                        data: $(this).serialize(),
+                        type: 'POST',
+                    }).done(function (data) {
+                        if (data.status) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');
+                            $("#div_" + data.tipo).html(data.contenido);
+                            $("#boton_guardar").hide();
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+                    });
+                    return false;
+                });
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+            });
+            $('#modal_contenido').modal('show');
+
+        }
+
+        function getNombreTipo(TipoDetalle) {
+            var titulo = "";
+            switch (TipoDetalle) {
+
+                case "1":
+                    titulo = titulo + "Servicio";
+                    break;
+                case "2":
+                    titulo = titulo + "Producto";
+                    break;
+                case "3":
+                    titulo = titulo + "Herramienta";
+                    break;
+                case "4":
+                    titulo = titulo + "Actividad";
+                    break;
+                case "5":
+                    titulo = titulo + "Archivo";
+                    break;
+                case "6":
+                    titulo = titulo + "Patente";
+                    break;
+                default:
+                    titulo = titulo + "Incorrecto";
+                    break;
+            }
+            return titulo;
+        }
+
+    });
+</script>
+}

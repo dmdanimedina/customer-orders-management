@@ -1,0 +1,29 @@
+﻿@model sistema_fichas.Business.Pedido
+
+
+<div class="col-xs-12 col-md-12">
+    <div class="form-group pull-right">
+        @if (PedidoHelper.esEditableOperaciones(Model.EstadoPedido.Estado))
+        {
+
+            <a href="#" class="cambiar_estado" data-id="@Model.ID" data-text="rechazar" data-action="@sistema_fichas.Business.TipoEstadoPedido.Rechazado_Operaciones.GetHashCode()">
+                @Html.BSbutton("warning btn-sm", "Rechazar pedido", "ban")
+            </a>
+            <a href="#" class="cambiar_estado" data-id="@Model.ID" data-text="aceptar" data-action="@sistema_fichas.Business.TipoEstadoPedido.Aprobado_Operaciones.GetHashCode()">
+                @Html.BSbutton("success btn-sm ", "Aceptar pedido", "check")
+            </a>
+
+        }
+       
+        
+        @if (PedidoHelper.EstadoAnulable(Model.EstadoPedido.Estado))
+        {
+
+            <button class="btn btn-danger btn-sm cambiar_estado" data-id="@Model.ID" data-text="anular" data-action="@sistema_fichas.Business.TipoEstadoPedido.Inactivo.GetHashCode()">
+                <span class="fa fa-check"></span> Anular Pedido
+            </button>
+        }
+
+
+      </div>
+</div>

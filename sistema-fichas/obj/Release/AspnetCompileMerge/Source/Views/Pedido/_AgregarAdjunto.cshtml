@@ -1,0 +1,45 @@
+﻿@model sistema_fichas.Business.Adjunto
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<div class="row">
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Pedido_ID)
+    @Html.HiddenFor(mode=>Model.ID)
+    @Html.HiddenFor(model => model.Estado)
+    @Html.HiddenFor(model => model.Version)
+
+    <div class="form-horizontal">
+        <div class="col-xs-12 col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ruta, new { @class = " control-label col-md-2" })
+                <div class="col-md-10">
+                    <span class='label label-default' id="upload-file-info"></span>
+                    <span class="btn btn-primary btn-file">
+                        <i class="fa fa-cloud-upload"> </i> Seleccionar Archivo<br />
+                        @Html.HiddenFor(model => model.Ruta, new { @type = "file", @onchange = "$('#upload-file-info').html($(this).val());" })
+                    </span>
+                    <em>@Html.ValidationMessageFor(model => model.Ruta, null, new { @class = "text-danger" })</em>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+ </div>  
+
+        
+
+

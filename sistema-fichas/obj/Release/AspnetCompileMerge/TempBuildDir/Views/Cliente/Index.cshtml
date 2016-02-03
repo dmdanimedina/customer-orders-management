@@ -1,0 +1,111 @@
+﻿@model IEnumerable<sistema_fichas.Business.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Gestión de Clientes</h2>
+
+<section class="opciones">
+    <hr />
+    <section id="busqueda" style="margin-top:20px">
+        <div class="row-fluid">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Busqueda Avanzada</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        @using (Html.BeginForm("Index", "Cliente", null, FormMethod.Get, new { @class = "navbar-form navbar-right form-inline", @for = "form" }))
+                        {
+                            <div class="form-group">
+                                @Html.TextBox("busqueda", "", new { @class = "form-control", @placeholder = "Ingrese el filtro" })
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary">
+                                    <span class="glyphicon glyphicon-search"> </span> Buscar
+                                </button>
+                                <button id="boton_crear" type="button" class="form-control btn btn-default" data-url="@Url.Action("Create", "Cliente")">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    Crear
+                                </button>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+
+    <hr />
+    <section id="tabla_clientes">
+        <table class="table table-hover table-responsive table-condensed table-striped table-bordered" id="table_export_cliente">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="col-md-2 text-center">@Html.DisplayNameFor(model => model.NombreFantasia)</th>
+                    <th class="col-md-2 text-center">@Html.DisplayNameFor(model => model.RazonSocial)</th>
+                    <th class="col-md-1 text-center">@Html.DisplayNameFor(model => model.Rut)</th>
+                    <th class="col-md-1 text-center">@Html.DisplayNameFor(model => model.Telefono)</th>
+                    <th class="col-md-1 text-center">@Html.DisplayNameFor(model => model.FechaCreacion)</th>
+                    <th class="col-md-1 text-center">@Html.DisplayNameFor(model => model.Industria)</th>
+                    <th class="col-md-1 text-center">@Html.DisplayNameFor(model => model.Usuario)</th>
+                    <th class="col-md-1 text-center">@Html.DisplayNameFor(model => model.Estado)</th>
+                    <th class="col-md-1 text-center"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if (!Model.Any()) { 
+                <tr><td class="text-center" colspan="10"><span class="text-danger">No se encontraron registros</span></td></tr>
+                } else { 
+                    foreach (var itemModel in Model)
+                        {
+                            <tr>
+                                <td class="">@Html.DisplayFor(modelItem => itemModel.ID)</td>
+                                <td><a href="@Url.Action("Details", "Cliente", new { id = itemModel.ID})">@Html.DisplayFor(modelItem => itemModel.NombreFantasia)</a></td>
+                                <td>@Html.DisplayFor(modelItem => itemModel.RazonSocial)</td>
+                                <td>@Html.DisplayFor(modelItem => itemModel.Rut)</td>
+                                <td>@Html.DisplayFor(modelItem => itemModel.Telefono)</td>
+                                <td>@Html.DisplayFor(modelItem => itemModel.FechaCreacion)</td>
+                                <td>@Html.DisplayFor(modelItem => itemModel.Industria.Nombre)</td>
+                                <td>@Html.DisplayFor(modelItem => itemModel.Usuario.UserName)</td>
+                                <td class="text-center"><label class="label label-@((itemModel.Estado.Equals(1))?"success":"default")">@((itemModel.Estado.Equals(1)) ? "activo" : "inactivo")</label></td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Cliente", new { id = itemModel.ID})">
+                                        <button class="btn btn-primary"><span class="fa fa-chevron-circle-right"></span></button>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                }
+
+            </tbody>
+        </table>
+
+    </section>
+     <div class="form-group  col-md-2">
+                                <button  id="boton_exportar" type="button" class="form-control btn btn-success">
+                                    <span class="glyphicon glyphicon-file"></span>
+                                    Exportar
+                                </button>
+
+                            </div>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#boton_crear").click(function () {
+            window.location.href = "@(Url.Action("Create", "Cliente"))";
+        });
+
+        $("#boton_exportar").click(function (e) {
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent($('#tabla_clientes').html()));
+            e.preventDefault();
+        });
+    });
+
+    </script>
+</section>
+

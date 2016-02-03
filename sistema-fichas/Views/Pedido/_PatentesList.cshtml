@@ -1,0 +1,59 @@
+﻿@model IEnumerable<sistema_fichas.Business.Patente>
+
+
+    <div class="row-fluid">
+    <table class="table table-bordered table-condensed table-striped table-hover">
+        <thead>
+            <tr class="text-center">
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.Pedido_ID)
+                </th>
+                <th class="text-center">Correlativo</th>
+                <th class="text-center">Número</th>
+                <th class="text-center">Estado</th>
+                <th class="text-center">Comentario</th>
+                <th class=""></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!(Model.Count() > 0))
+            {
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <span class="text-danger"> No se encontraron registros </span>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                int count = 1;
+                foreach (var item in Model)
+                {
+                    <tr id="patentes-@Html.DisplayFor(modelItem => item.ID)">
+                        <td class="col-xs-1 text-center">
+                            @item.Pedido_ID
+                        </td>
+                        <td class="col-xs-1 text-center"> @(count++) </td>
+                        <td class="text-center"> @Html.DisplayFor(modelItem => item.Numero) </td>
+                        <td class ="text-center"><label class="label label-success">@Html.DisplayFor(modelItem => item.NombreEstado)</label></td>
+                        <td class="text-center"> @Html.DisplayFor(modelItem => item.Comentario) </td>
+                        <td class="text-center">
+                            @Html.botonEliminar(sistema_fichas.Business.TipoPedidoDetalle.Patente.GetHashCode(), item.ID.ToString()).If(PedidoHelper.esActivoEditable(item.Estado.Value, item.Pedido.EstadoPedido.Estado))
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    
+<script>
+    $(document).ready(function () {
+        
+    })
+
+    </script>
+}

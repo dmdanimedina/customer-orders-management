@@ -1,0 +1,6 @@
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.WebService\bin\sistema-fichas.WebService.dll.config
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.WebService\bin\sistema-fichas.WebService.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.WebService\bin\sistema-fichas.WebService.pdb
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.WebService\obj\Release\sistema-fichas.WebService.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.WebService\obj\Release\sistema-fichas.WebService.dll
+C:\Users\Daniel\Documents\AppVisual\customer-orders-management-master\sistema-fichas.WebService\obj\Release\sistema-fichas.WebService.pdb

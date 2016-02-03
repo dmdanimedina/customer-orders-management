@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24BFD038-9194-47AD-AE6B-82582B5E267E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>sistema_fichas.Business</RootNamespace>
+    <AssemblyName>sistema-fichas.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountModels.cs" />
+    <Compile Include="Adjunto.cs" />
+    <Compile Include="Catalogo.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="Contacto.cs" />
+    <Compile Include="Direccion.cs" />
+    <Compile Include="EstadoDetalle.cs" />
+    <Compile Include="EstadoPedido.cs" />
+    <Compile Include="FichasContext.cs" />
+    <Compile Include="Herramienta.cs" />
+    <Compile Include="Industria.cs" />
+    <Compile Include="Migrations\201506061748274_InitialCreate.cs" />
+    <Compile Include="Migrations\201506061748274_InitialCreate.Designer.cs">
+      <DependentUpon>201506061748274_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506101917455_InitialCreateMigration.cs" />
+    <Compile Include="Migrations\201506101917455_InitialCreateMigration.Designer.cs">
+      <DependentUpon>201506101917455_InitialCreateMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506131814304_UpdatePedidoDetalleMigration.cs" />
+    <Compile Include="Migrations\201506131814304_UpdatePedidoDetalleMigration.Designer.cs">
+      <DependentUpon>201506131814304_UpdatePedidoDetalleMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506131929205_AddTipoToPedidoDetalleMigration.cs" />
+    <Compile Include="Migrations\201506131929205_AddTipoToPedidoDetalleMigration.Designer.cs">
+      <DependentUpon>201506131929205_AddTipoToPedidoDetalleMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506150102422_AddNullAbleToFechaInicioMigration.cs" />
+    <Compile Include="Migrations\201506150102422_AddNullAbleToFechaInicioMigration.Designer.cs">
+      <DependentUpon>201506150102422_AddNullAbleToFechaInicioMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506161835509_AddEstadoToCatalogoMigration.cs" />
+    <Compile Include="Migrations\201506161835509_AddEstadoToCatalogoMigration.Designer.cs">
+      <DependentUpon>201506161835509_AddEstadoToCatalogoMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506171754256_AddContratoToClienteMigration.cs" />
+    <Compile Include="Migrations\201506171754256_AddContratoToClienteMigration.Designer.cs">
+      <DependentUpon>201506171754256_AddContratoToClienteMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506261350217_UpdatePedidoDetalleCatalogoMigration.cs" />
+    <Compile Include="Migrations\201506261350217_UpdatePedidoDetalleCatalogoMigration.Designer.cs">
+      <DependentUpon>201506261350217_UpdatePedidoDetalleCatalogoMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506261539252_AddDefaultValueToValorBaseMigration.cs" />
+    <Compile Include="Migrations\201506261539252_AddDefaultValueToValorBaseMigration.Designer.cs">
+      <DependentUpon>201506261539252_AddDefaultValueToValorBaseMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506261747396_ChangeTypeIntToDoubleMigration.cs" />
+    <Compile Include="Migrations\201506261747396_ChangeTypeIntToDoubleMigration.Designer.cs">
+      <DependentUpon>201506261747396_ChangeTypeIntToDoubleMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506261824133_AddValorBaseUFValorBaseCLPMigration.cs" />
+    <Compile Include="Migrations\201506261824133_AddValorBaseUFValorBaseCLPMigration.Designer.cs">
+      <DependentUpon>201506261824133_AddValorBaseUFValorBaseCLPMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507141550103_AddStatusToAllClases.cs" />
+    <Compile Include="Migrations\201507141550103_AddStatusToAllClases.Designer.cs">
+      <DependentUpon>201507141550103_AddStatusToAllClases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601061600234_AddPatenteModelAndRelations.cs" />
+    <Compile Include="Migrations\201601111503336_UpdatePatenteModel1.cs" />
+    <Compile Include="Migrations\201601111503336_UpdatePatenteModel1.Designer.cs">
+      <DependentUpon>201601111503336_UpdatePatenteModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602021610070_UpdateJustInCase.cs" />
+    <Compile Include="Migrations\201602021610070_UpdateJustInCase.Designer.cs">
+      <DependentUpon>201602021610070_UpdateJustInCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Modalidad.cs" />
+    <Compile Include="Moneda.cs" />
+    <Compile Include="OrdenTrabajo.cs" />
+    <Compile Include="Patente.cs" />
+    <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoDetalle.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoCliente.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sistema-fichas.Business.Core\sistema-fichas.Business.Core.csproj">
+      <Project>{7dc65124-eccf-453c-8c7a-22e7529251eb}</Project>
+      <Name>sistema-fichas.Business.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201506061748274_InitialCreate.resx">
+      <DependentUpon>201506061748274_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506101917455_InitialCreateMigration.resx">
+      <DependentUpon>201506101917455_InitialCreateMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506131814304_UpdatePedidoDetalleMigration.resx">
+      <DependentUpon>201506131814304_UpdatePedidoDetalleMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506131929205_AddTipoToPedidoDetalleMigration.resx">
+      <DependentUpon>201506131929205_AddTipoToPedidoDetalleMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506150102422_AddNullAbleToFechaInicioMigration.resx">
+      <DependentUpon>201506150102422_AddNullAbleToFechaInicioMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506161835509_AddEstadoToCatalogoMigration.resx">
+      <DependentUpon>201506161835509_AddEstadoToCatalogoMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506171754256_AddContratoToClienteMigration.resx">
+      <DependentUpon>201506171754256_AddContratoToClienteMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506261350217_UpdatePedidoDetalleCatalogoMigration.resx">
+      <DependentUpon>201506261350217_UpdatePedidoDetalleCatalogoMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506261539252_AddDefaultValueToValorBaseMigration.resx">
+      <DependentUpon>201506261539252_AddDefaultValueToValorBaseMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506261747396_ChangeTypeIntToDoubleMigration.resx">
+      <DependentUpon>201506261747396_ChangeTypeIntToDoubleMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506261824133_AddValorBaseUFValorBaseCLPMigration.resx">
+      <DependentUpon>201506261824133_AddValorBaseUFValorBaseCLPMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507141550103_AddStatusToAllClases.resx">
+      <DependentUpon>201507141550103_AddStatusToAllClases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601111503336_UpdatePatenteModel1.resx">
+      <DependentUpon>201601111503336_UpdatePatenteModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602021610070_UpdateJustInCase.resx">
+      <DependentUpon>201602021610070_UpdateJustInCase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

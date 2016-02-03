@@ -1,0 +1,170 @@
+﻿@model sistema_fichas.ViewModels.PedidoViewModel
+
+@{ ViewBag.Title = "Ver Pedido"; }
+
+<div id="div_pedidos">
+    @(Html.Partial("~/Views/Pedido/_PedidoDetalle.cshtml", Model.Pedido))
+</div>
+
+<div id="div_btn_estado_editar_pedido">
+    @(Html.Partial("~/Views/Operaciones/_BotonesPedidoDetalle.cshtml", Model.Pedido))
+</div>
+
+<div id="div_detalle" class="col-xs-12 col-md-12">
+
+    <h3>Servicios</h3>
+    <div id="div_servicios">
+        @(Html.Partial("~/Views/Pedido/_ServiciosList.cshtml", Model.ServiciosActivos))
+
+    </div>
+</div>
+
+<div id="div_patente" class="col-xs-12 col-md-12 col-lg-12">
+    <h3>Patentes</h3>
+    <div id="div_patentes">
+        @(Html.Partial("~/Views/Pedido/_PatentesList.cshtml", Model.PatentesActivas))
+    </div>
+</div>
+
+<div id="div_producto" class="col-xs-12 col-md-12">
+    <h3>Productos</h3>
+    <div id="div_productos">
+        @(Html.Partial("~/Views/Pedido/_ProductosList.cshtml", Model.ProductosActivos))
+    </div>
+</div>
+
+
+<div id="div_actividad" class="col-xs-12 col-md-12">
+    <h3>Actividades</h3>
+    <div id="div_actividades">
+        @(Html.Partial("~/Views/Pedido/_ActividadesList.cshtml", Model.ActividadesActivas))
+    </div>
+    @if (PedidoHelper.esEditableOperaciones(Model.Pedido.EstadoPedido.Estado))
+    {
+        <div class="col-xs-12 col-md-12">
+            <button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#modal_contenido" id="agregar_actividad" data-id="@Model.Pedido.ID" data-type="actividad">
+                <i class="fa fa-tags"></i> Agregar Actividad
+            </button>
+        </div>
+    }
+</div>
+
+
+<div id="div_herramienta" class="col-xs-12 col-md-12">
+    <h3>Herramientas</h3>
+    <div id="div_herramientas">
+        @(Html.Partial("~/Views/Pedido/_HerramientaList.cshtml", Model.HerramientasActivas))
+    </div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#agregar_actividad").click(function () {
+            agregar_actividad($(this).attr('data-id'));
+        });
+
+        function agregar_actividad(PedidoID) {
+            resetModal("Agregar Actividad");
+            $.ajax({
+                url: '@Url.Action("AgregarActividad","Pedido")',
+                data: { PedidoID: PedidoID },
+                type: 'GET',
+            }).done(function (data) {
+                $("#modal_body").html(data);
+                $("#modal_body form").submit(function () {
+                    $('#PedidoDetalle_Valor').val($('#PedidoDetalle_Valor').val().replace('.', ','))
+                    contenidoElemento($("#boton_guardar"), '<i class="fa fa-cog fa-spin"> </i> Guardando...', 'disabled', null);
+                    $.ajax({
+                        url: '@Url.Action("AgregarActividad", "Pedido")',
+                        data: $(this).serialize(),
+                        type: 'POST'
+                    }).done(function (data) {
+                        if (data.status) {
+                            lockModalInputs()
+                            msg_modal_alert(data.msg, 'success');
+                            $("#div_actividades").html(data.contenido);
+                            $("#boton_guardar").hide();
+                            $(document).off("click", ".borrar_detalle");
+                            $(document).on("click", ".borrar_detalle", function () { eliminar_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+                        } else {
+                            msg_modal_alert(data.msg, 'danger');
+                        }
+                        contenidoElemento($("#boton_guardar"), 'Guardar', null, 'disabled');
+                    });
+                    return false;
+                });
+                $("#boton_guardar").off('click');
+                $("#boton_guardar").click(function () { $("#modal_body form").submit(); });
+
+            });
+        }
+
+
+        // Funcion para enviar a revisión
+        $(document).on("click", ".cambiar_estado", function () { cambiar_estado($(this).attr('data-id'), $(this).attr('data-action'), $(this).attr('data-text')) });
+        function cambiar_estado(PedidoID, ActionID, ActionName) {
+
+            if (confirm("¿Está seguro de " + ActionName + " este pedido?")) {
+                $.ajax({
+                    url: '@(Url.Action("CambiarEstado","Operaciones"))',
+                    data: { PedidoID: PedidoID, Estado: ActionID },
+                    type: 'POST',
+                }).done(function (data) {
+                    if (data.status == true) {
+                        $('#div_pedidos').html(data.contenido);
+                        $('#div_btn_estado_editar_pedido').html(data.contenidoBotones);
+                        $('#agregar_actividad').hide();
+                    }
+                    alert(data.msg);
+                });
+            }
+        }
+
+
+
+        $(document).on("click", "#estado_pedido", function () { estado_pedido($(this).attr('data-id'), $(this).attr('data-url')) });
+        function estado_pedido(PedidoID, URL) {
+
+            resetModal("Cambiar Estado Detalle");
+            if (confirm("¿Está seguro de cambiar el estado a este pedido?")) {
+                $.ajax({
+                    url: URL,
+                    data: { PedidoID: PedidoID },
+                    type: 'POST',
+                }).done(function (data) {
+                    if (data.status == true) {
+                        $('#div_pedidos').html(data.contenido);
+                        $('#div_btn_estado_editar_pedido').html(data.contenidoBotones);
+                        $('#agregar_actividad').hide();
+                    } else {
+                        $("#modal_alert").html(data.msg).addClass('alert-danger');
+                    }
+                });
+            }
+        }
+
+
+        $('.ver_detalle').click(function () { ver_detalle($(this).attr('data-id'), $(this).attr('data-type')) });
+        function ver_detalle(id, tipo) {
+            resetModal("Ver Detalle");
+            $("#boton_guardar").off('click');
+            $("#boton_guardar").addClass('hidden');
+
+            $("#modal_contenido").modal("show")
+            $.ajax({
+                url: '@Url.Action("VerPedidoDetalle", "Pedido")',
+                data: { PedidoDetalleID: id, TipoPedidoDetalle: tipo },
+                type: 'POST'
+            }).done(function (data) {
+                $("#modal_body").html(data);
+            });
+
+        }
+
+
+    });
+    </script>
+}

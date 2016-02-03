@@ -1,0 +1,87 @@
+﻿@model sistema_fichas.Business.Pedido
+<div class="row">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.Cliente_ID)
+        @Html.HiddenFor(model => model.UserProfile_ID)
+        @Html.HiddenFor(model => model.EstadoPedido_ID)
+        
+        <div class="form-horizontal">
+            <div class="col-xs-12 col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cliente, new { @class = "control-label col-md-3 col-xs-12" })
+                    <div class="col-md-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.Cliente.NombreFantasia, new { @class = "form-control", @disabled=true })
+                        @Html.ValidationMessageFor(model => model.Cliente.NombreFantasia, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaInicio, new { @class = "control-label col-md-3 col-xs-12" })
+                    <div class="col-md-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.FechaInicio, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.FechaInicio, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaTermino, new { @class = "control-label col-md-3 col-xs-12" })
+                    <div class="col-md-6 col-xs-12">
+                        @Html.TextBoxFor(model => model.FechaTermino, new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.FechaTermino, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EstadoPedido, new { @class = "control-label col-md-3 col-xs-12" })
+                    <div class="col-md-4 col-xs-12">
+                        @Html.TextBoxFor(model => model.EstadoPedido.Nombre, new { @class = "form-control", @disabled = true })
+                        @Html.ValidationMessageFor(model => model.EstadoPedido, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-xs-12 col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Facturado, new { @class = "control-label col-md-3 col-xs-12" })
+                    <div class="col-md-4 col-xs-12">                                                    
+                        @Html.TextBoxFor(model => model.Facturado, new { @type = "checkbox", @class="form-control" })
+                        @Html.ValidationMessageFor(model => model.Facturado, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+
+    }
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            dateInicio = $('#@Html.IdFor(model => model.FechaInicio)');
+            dateTermino = $('#@Html.IdFor(model => model.FechaTermino)');
+
+            dateTermino.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+            dateInicio.datetimepicker({ format: 'DD/MM/YYYY hh:mm:ss' });
+
+            dateInicio.on("dp.change", function (e) {
+                dateTermino.data("DateTimePicker").minDate(e.date);
+            });
+            dateTermino.on("dp.change", function (e) {
+                dateInicio.data("DateTimePicker").maxDate(e.date);
+            });
+
+            });
+
+        var options = {
+            onText: "Si",
+            offText: "No"
+        };
+        $("#@Html.IdFor(model => model.Facturado)").bootstrapSwitch(options);
+    });
+</script>
+

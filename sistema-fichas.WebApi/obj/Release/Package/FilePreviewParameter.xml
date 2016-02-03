@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="control.samtech.cl/WebApi" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Samtech\\sistema-fichas\\sistema-fichas\.WebApi\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Samtech\\sistema-fichas\\sistema-fichas\.WebApi\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="FichasContext-Web.config Connection String" description="" value="Data Source=192.168.1.7;Initial Catalog=sistema-fichas;Persist Security Info=True;User ID=usuweb;Password=Smt7$RtvB2" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Samtech\\sistema-fichas\\sistema-fichas\.WebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='FichasContext']/@connectionString" />
+  </parameter>
+</parameters>

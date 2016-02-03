@@ -1,0 +1,59 @@
+﻿@model IEnumerable<sistema_fichas.Business.Adjunto>
+<div class="row-fluid">
+    <table class="table table-bordered table-condensed table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="col-xs-1">
+                    @Html.DisplayNameFor(model => model.Pedido_ID)
+                </th>
+                <th class="col-xs-1">Correlativo</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+
+                <th class="col-xs-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <span class="text-danger text-center"> No se encontraron registros </span>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+                    <tr id="adjunto-@(item.ID)">
+                        <th>
+                            @Html.DisplayFor(model => item.Pedido_ID)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(model => item.ID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.FechaHora)
+                        </td>
+
+                        <td>
+                            <div class="text-center">
+                                @Html.botonVer(sistema_fichas.Business.TipoPedidoDetalle.Adjunto.GetHashCode(), item.ID.ToString())
+                                @Html.botonEditar(sistema_fichas.Business.TipoPedidoDetalle.Adjunto.GetHashCode(), item.ID.ToString())
+                                @Html.botonEliminar(sistema_fichas.Business.TipoPedidoDetalle.Adjunto.GetHashCode(), item.ID.ToString())
+
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+
+            }
+
+        </tbody>
+    </table>
+</div>

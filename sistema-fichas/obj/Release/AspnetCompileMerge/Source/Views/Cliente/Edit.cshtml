@@ -1,0 +1,106 @@
+﻿@model sistema_fichas.ViewModels.ClienteViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<legend>
+    <h2>Editar Cuenta</h2>
+</legend>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row-fluid form-horizontal">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.NombreFantasia, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.NombreFantasia, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.NombreFantasia)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Rut, new { @class = "control-label col-md-4" })
+                <div class="col-md-8  pull-left">
+                    @Html.TextBoxFor(model => model.cliente.Rut, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Rut)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ListaTipoCliente, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(
+                        model => model.cliente.TipoCliente,
+                        Model.ListaTipoCliente,
+                        new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ListaTipoCliente)
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="col-md-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.cliente.Giro, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.cliente.Giro, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.cliente.Giro)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.cliente.Industria, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.cliente.Industria_ID, Model.ListaIndustrias, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.cliente.Industria)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.cliente.RazonSocial, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.cliente.RazonSocial, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.cliente.RazonSocial)
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.Telefono, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.cliente.Telefono, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.cliente.Telefono)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.cliente.User_ID, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.cliente.User_ID, Model.ListaUsuarios, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ListaUsuarios)
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="col-md-12 pull-right">
+            @Html.ActionLink("Back to List", "Index",null,  new { @class = "btn btn-default" }) | 
+            <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-check"> </span> Guardar
+            </button>
+        
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
